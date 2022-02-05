@@ -27,7 +27,7 @@ public class Product implements Serializable {
     private int warranty;
 
     @Column(name = "degreeOfDepreciation")
-    private int degreeOfDepreciation;
+    private float degreeOfDepreciation;
 
     @ManyToOne
     @JoinColumn(name = "stateID", nullable = false)
@@ -36,7 +36,7 @@ public class Product implements Serializable {
     @Column(name = "status")
     private int status;
 
-    public Product(String inventoryNumber, String description, Type typeID, Date dateOfRegistration, int warranty, int degreeOfDepreciation, States stateID, int status) {
+    public Product(String inventoryNumber, String description, Type typeID, Date dateOfRegistration, int warranty, float degreeOfDepreciation, States stateID, int status) {
         this.inventoryNumber = inventoryNumber;
         this.description = description;
         this.typeID = typeID;
@@ -91,11 +91,11 @@ public class Product implements Serializable {
         this.warranty = warranty;
     }
 
-    public int getDegreeOfDepreciation() {
+    public float getDegreeOfDepreciation() {
         return degreeOfDepreciation;
     }
 
-    public void setDegreeOfDepreciation(int degreeOfDepreciation) {
+    public void setDegreeOfDepreciation(float degreeOfDepreciation) {
         this.degreeOfDepreciation = degreeOfDepreciation;
     }
 

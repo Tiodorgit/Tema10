@@ -16,22 +16,22 @@
       <TextField fx:id="firstNameTextBox" layoutX="213.0" layoutY="108.0" />
       <TextField fx:id="lastNameTextBox" layoutX="213.0" layoutY="164.0" />
       <TextField fx:id="telephoneNumberTextBox" layoutX="213.0" layoutY="224.0" />
-      <Label layoutX="54.0" layoutY="74.0" prefHeight="32.0" prefWidth="314.0" text="Първо Име">
+      <Label layoutX="245.0" layoutY="74.0" prefHeight="32.0" prefWidth="109.0" text="Първо Име">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="134.0" prefHeight="32.0" prefWidth="305.0" text="Фамилно Име">
+      <Label layoutX="232.0" layoutY="134.0" prefHeight="32.0" prefWidth="110.0" text="Фамилно Име">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="190.0" prefHeight="32.0" prefWidth="314.0" text="Телефонен Номер">
+      <Label layoutX="216.0" layoutY="190.0" prefHeight="32.0" prefWidth="142.0" text="Телефонен Номер">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Button fx:id="insertIntoCustomersButton" layoutX="262.0" layoutY="290.0" mnemonicParsing="false" onAction="#onInsertIntoCustomers" prefHeight="71.0" prefWidth="93.0" text="Въведи" />
-      <Button layoutX="7.0" layoutY="3.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="93.0" text="Назад" />
+      <Button fx:id="goBackButton" layoutX="7.0" layoutY="3.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="71.0" prefWidth="93.0" text="Назад" />
    </children>
 </AnchorPane>
