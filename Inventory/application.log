@@ -1,0 +1,28 @@
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory errorjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory errorjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory errorjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.business.services.AdminService  - Cannot find any mols in database!
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory errorjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory errorjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failedjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failedjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failedjava.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.business.services.AdminService  - Cannot find any mols in database!
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException
+[JavaFX Application Thread] ERROR bg.tu_varna.sit.inventory.data.access.Connection  - Initial SessionFactory created failed java.lang.NoClassDefFoundError: java/sql/SQLException

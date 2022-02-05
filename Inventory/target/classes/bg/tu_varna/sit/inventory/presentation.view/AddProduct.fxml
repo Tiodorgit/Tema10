@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="AddProduct" layoutX="-8.0" layoutY="-17.0" prefHeight="77.0" prefWidth="467.0" text="                     Добавяне На Продукт" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField layoutX="41.0" layoutY="200.0" prefHeight="32.0" prefWidth="149.0" />
+      <TextField layoutX="41.0" layoutY="154.0" />
+      <TextField layoutX="41.0" layoutY="263.0" />
+      <Label layoutX="-111.0" layoutY="46.0" prefHeight="77.0" prefWidth="467.0" text="                                          Инвентарен Номер">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="-145.0" layoutY="211.0" prefHeight="77.0" prefWidth="467.0" text="                                                 Дата на Регистрация" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="-108.0" layoutY="166.0" prefHeight="50.0" prefWidth="430.0" text="                                                Тип на ID">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="84.0" />
+      <Label layoutX="-102.0" layoutY="97.0" prefHeight="77.0" prefWidth="467.0" text="                                                 Описание">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="-108.0" layoutY="263.0" prefHeight="77.0" prefWidth="467.0" text="                                                Тип на ID">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="41.0" layoutY="315.0" />
+      <TextField layoutX="48.0" layoutY="97.0" />
+      <Label layoutX="176.0" layoutY="32.0" prefHeight="77.0" prefWidth="467.0" text="                                          Гаранция">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="85.0" prefHeight="77.0" prefWidth="467.0" text="                                          Степен На Амортизация">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="142.0" />
+      <Label layoutX="151.0" layoutY="141.0" prefHeight="77.0" prefWidth="467.0" text="                                                 Описание">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="199.0" />
+      <Label layoutX="176.0" layoutY="200.0" prefHeight="77.0" prefWidth="467.0" text="                                          ID на Състояние">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="251.0" />
+      <Label layoutX="159.0" layoutY="263.0" prefHeight="77.0" prefWidth="467.0" text="                                          Статус">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="310.0" layoutY="321.0" />
+      <Button layoutX="212.0" layoutY="334.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Въведи" />
+      <Button layoutX="11.0" layoutY="7.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Назад" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label id="AddAccountablePerson" layoutX="27.0" prefHeight="77.0" prefWidth="467.0" text="                     Добавяне на МОЛ" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField layoutX="213.0" layoutY="108.0" />
+      <TextField layoutX="213.0" layoutY="164.0" />
+      <Label layoutX="67.0" layoutY="56.0" prefHeight="77.0" prefWidth="467.0" text="                                                     Username">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="112.0" prefHeight="77.0" prefWidth="467.0" text="                                                  Password">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="172.0" prefHeight="77.0" prefWidth="467.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="263.0" layoutY="237.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="75.0" text="Въведи" />
+      <Button layoutX="14.0" layoutY="11.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="75.0" text="Назад" />
+   </children>
+</AnchorPane>
