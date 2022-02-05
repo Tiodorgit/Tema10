@@ -21,8 +21,6 @@ import static bg.tu_varna.sit.inventory.common.Constants.View.ADMIN_VIEW;
 public class LoginScreenController {
     Stage s = new Stage();
 
-    public static boolean whichUser;
-
     @FXML
     private Button loginButton;
     @FXML
@@ -52,8 +50,7 @@ public class LoginScreenController {
                 AdminListViewModel adminFind = new AdminListViewModel(username.getText(), password.getText());
                 if (logService.isAdminExist(adminFind))
                 {
-                    try
-                    {   whichUser=false;
+                    try {
                         s.close();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ADMIN_VIEW));
                         Stage stage = new Stage();
@@ -66,9 +63,7 @@ public class LoginScreenController {
                         e.printStackTrace();
                     }
                 }
-                else
-                {
-                    //wrongLogin.setText("No such Admin!");
+                else {
                     username.setText("");
                     password.setText("");
                 }
@@ -78,9 +73,7 @@ public class LoginScreenController {
 
                 if (logService.isAccountablePersonExist(molFind))
                 {
-                    try
-                    {
-                        whichUser=true;
+                    try {
                         s.close();
                         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ACCOUNTABLE_PERSON_VIEW));
                         Stage stage = new Stage();
@@ -93,9 +86,7 @@ public class LoginScreenController {
                         e.printStackTrace();
                     }
                 }
-                else
-                {
-                    //wrongLogin.setText("No such Mol!");
+                else {
                     username.setText("");
                     password.setText("");
                 }
