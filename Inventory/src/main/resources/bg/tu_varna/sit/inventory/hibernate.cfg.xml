@@ -10,11 +10,11 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
+        <mapping class="bg.tu_varna.sit.inventory.data.entities.AccountablePerson" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.Admin" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.Cardboard" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.Customer" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.DefectiveProduct" />
-        <mapping class="bg.tu_varna.sit.inventory.data.entities.AccountablePerson" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.Product" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.States" />
         <mapping class="bg.tu_varna.sit.inventory.data.entities.Type" />
