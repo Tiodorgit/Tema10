@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.inventory.business.services;
 
-import bg.tu_varna.sit.inventory.data.entities.AccountablePerson;
+import bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity;
 import bg.tu_varna.sit.inventory.data.repositories.AccountablePersonRepository;
 import bg.tu_varna.sit.inventory.presentation.models.AccountablePersonListViewModel;
 import javafx.collections.FXCollections;
@@ -23,7 +23,7 @@ public class AccountablePersonService {
     }
 
     public ObservableList<AccountablePersonListViewModel> getAllAccountablePerson(){
-        List<AccountablePerson> mols = repositoryAccountablePerson.getAll();
+        List<AccountablePersonsEntity> mols = repositoryAccountablePerson.getAll();
         if(mols!= null) {
             return FXCollections.observableList(
                     mols.stream().map(m -> new AccountablePersonListViewModel(m.getUsername(), m.getPassword()
@@ -36,10 +36,10 @@ public class AccountablePersonService {
         }
     }
 
-    public AccountablePerson listViewToEntity(AccountablePersonListViewModel m){
-        AccountablePerson temp = new AccountablePerson(m.getUsername(),m.getPassword());
-        List<AccountablePerson> mols = repositoryAccountablePerson.getAll();
-        for (AccountablePerson mol: mols) {
+    public AccountablePersonsEntity listViewToEntity(AccountablePersonListViewModel m){
+        AccountablePersonsEntity temp = new AccountablePersonsEntity(m.getUsername(),m.getPassword());
+        List<AccountablePersonsEntity> mols = repositoryAccountablePerson.getAll();
+        for (AccountablePersonsEntity mol: mols) {
             if(mol.equals(temp))
                 return mol;
         }

@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.DefectiveProduct;
+import bg.tu_varna.sit.inventory.data.entities.DefectiveProductsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class DefectiveProductRepository implements DAORepository<DefectiveProduct> {
+public class DefectiveProductRepository implements DAORepository<DefectiveProductsEntity> {
     private static final Logger log = Logger.getLogger(DefectiveProductRepository.class);
     private static DefectiveProductRepository getInstance() {
         return DefectiveProductRepository.DefectiveProductRepositoryHolder.INSTANCE;
@@ -19,7 +19,7 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
         public static final DefectiveProductRepository INSTANCE = new DefectiveProductRepository();
     }
     @Override
-    public void save(DefectiveProduct obj) {
+    public void save(DefectiveProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -35,7 +35,7 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
     }
 
     @Override
-    public void update(DefectiveProduct obj) {
+    public void update(DefectiveProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -51,7 +51,7 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
     }
 
     @Override
-    public void delete(DefectiveProduct obj) {
+    public void delete(DefectiveProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -67,13 +67,13 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
     }
 
     @Override
-    public Optional<DefectiveProduct> getById(String id) {
+    public Optional<DefectiveProductsEntity> getById(String id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        DefectiveProduct defectiveProduct = new DefectiveProduct();
+        DefectiveProductsEntity defectiveProduct = new DefectiveProductsEntity();
         try {
-            String jpql = "SELECT a FROM DefectiveProduct a WHERE id =" + id.toString();
-            defectiveProduct=session.createQuery(jpql, DefectiveProduct.class).getSingleResult();
+            String jpql = "SELECT a FROM DefectiveProductsEntity a WHERE id =" + id.toString();
+            defectiveProduct=session.createQuery(jpql, DefectiveProductsEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -84,18 +84,18 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
     }
 
     @Override
-    public Optional<DefectiveProduct> getById(Integer id) {
+    public Optional<DefectiveProductsEntity> getById(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public List<DefectiveProduct> getAll() {
+    public List<DefectiveProductsEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<DefectiveProduct> defectiveProducts = new LinkedList<>();
+        List<DefectiveProductsEntity> defectiveProducts = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM DefectiveProduct a";
-            defectiveProducts.addAll(session.createQuery(jpql, DefectiveProduct.class).getResultList());
+            String jpql = "SELECT a FROM DefectiveProductsEntity a";
+            defectiveProducts.addAll(session.createQuery(jpql, DefectiveProductsEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

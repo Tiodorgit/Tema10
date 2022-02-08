@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.Cardboard;
+import bg.tu_varna.sit.inventory.data.entities.CardboardsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class CardboardRepository implements DAORepository<Cardboard>{
+public class CardboardRepository implements DAORepository<CardboardsEntity>{
     private static final Logger log =Logger.getLogger(CardboardRepository.class);
 
     private static CardboardRepository getInstance() { return CardboardRepository.CardboardRepositoryHolder.INSTANCE; }
@@ -19,7 +19,7 @@ public class CardboardRepository implements DAORepository<Cardboard>{
     }
 
     @Override
-    public void save(Cardboard obj) {
+    public void save(CardboardsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -35,7 +35,7 @@ public class CardboardRepository implements DAORepository<Cardboard>{
     }
 
     @Override
-    public void update(Cardboard obj) {
+    public void update(CardboardsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -51,7 +51,7 @@ public class CardboardRepository implements DAORepository<Cardboard>{
     }
 
     @Override
-    public void delete(Cardboard obj) {
+    public void delete(CardboardsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -67,18 +67,18 @@ public class CardboardRepository implements DAORepository<Cardboard>{
     }
 
     @Override
-    public Optional<Cardboard> getById(String id) {
+    public Optional<CardboardsEntity> getById(String id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Cardboard> getById(Integer id) {
+    public Optional<CardboardsEntity> getById(Integer id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        Cardboard cardboard = new Cardboard();
+        CardboardsEntity cardboard = new CardboardsEntity();
         try {
             String jpql = "SELECT a FROM Cardboard a WHERE id =" + id.toString();
-            cardboard = session.createQuery(jpql, Cardboard.class).getSingleResult();
+            cardboard = session.createQuery(jpql, CardboardsEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -89,13 +89,13 @@ public class CardboardRepository implements DAORepository<Cardboard>{
     }
 
     @Override
-    public List<Cardboard> getAll() {
+    public List<CardboardsEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Cardboard> cardboardList = new LinkedList<>();
+        List<CardboardsEntity> cardboardList = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM Cardboard a";
-            cardboardList.addAll(session.createQuery(jpql, Cardboard.class).getResultList());
+            String jpql = "SELECT a FROM CardboardsEntity a";
+            cardboardList.addAll(session.createQuery(jpql, CardboardsEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

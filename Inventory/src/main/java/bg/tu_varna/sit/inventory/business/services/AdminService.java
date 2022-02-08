@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.inventory.business.services;
 
-import bg.tu_varna.sit.inventory.data.entities.Admin;
+import bg.tu_varna.sit.inventory.data.entities.AdminsEntity;
 import bg.tu_varna.sit.inventory.data.repositories.AdminRepository;
 import bg.tu_varna.sit.inventory.presentation.models.AdminListViewModel;
 import javafx.collections.FXCollections;
@@ -23,7 +23,7 @@ public class AdminService {
 
 
     public ObservableList<AdminListViewModel> getAllAdmin() {
-        List<Admin> admins=repository.getAll();
+        List<AdminsEntity> admins=repository.getAll();
 
         return FXCollections.observableList(
                 admins.stream().map(a -> new AdminListViewModel(

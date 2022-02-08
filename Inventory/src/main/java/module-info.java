@@ -13,12 +13,20 @@ module bg.tu_varna.sit.inventory {
     requires org.hibernate.orm.core;
     requires java.persistence;
     requires java.naming;
+    requires java.sql;
+
+    opens bg.tu_varna.sit.inventory.data.entities to org.hibernate.orm.core;
+    exports bg.tu_varna.sit.inventory.data.entities;
+
+    opens bg.tu_varna.sit.inventory.data.access to org.hibernate.orm.core;
+    exports bg.tu_varna.sit.inventory.data.access;
 
     exports bg.tu_varna.sit.inventory.application;
     opens bg.tu_varna.sit.inventory.application to javafx.fxml;
 
     exports bg.tu_varna.sit.inventory.presentation.controllers;
     opens bg.tu_varna.sit.inventory.presentation.controllers to javafx.fxml;
+
     exports bg.tu_varna.sit.inventory.presentation.models;
     opens bg.tu_varna.sit.inventory.presentation.models to javafx.fxml;
 }

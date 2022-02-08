@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.presentation.models;
 
-import bg.tu_varna.sit.inventory.data.entities.States;
-import bg.tu_varna.sit.inventory.data.entities.Type;
+import bg.tu_varna.sit.inventory.data.entities.StatesEntity;
+import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 
 import java.util.Date;
 import java.util.Objects;
@@ -9,17 +9,17 @@ import java.util.Objects;
 public class DefectiveProductListViewModel {
     private String inventoryNumber;
     private String description;
-    private Type typeID;
+    private TypesEntity typeID;
     private Date dateOfRegistration;
     private int warranty;
     private int degreeOfDepreciation;
-    private States stateID;
+    private StatesEntity stateID;
     private int status;
     private Date dateOfScrapping;
 
     public DefectiveProductListViewModel(){}
 
-    public DefectiveProductListViewModel(String inventoryNumber, String description, Type typeID, Date dateOfRegistration, int warranty, int degreeOfDepreciation, States stateID, int status, Date dateOfScrapping) {
+    public DefectiveProductListViewModel(String inventoryNumber, String description, TypesEntity typeID, Date dateOfRegistration, int warranty, int degreeOfDepreciation, StatesEntity stateID, int status, Date dateOfScrapping) {
         this.inventoryNumber = inventoryNumber;
         this.description = description;
         this.typeID = typeID;
@@ -47,11 +47,11 @@ public class DefectiveProductListViewModel {
         this.description = description;
     }
 
-    public Type getTypeID() {
+    public TypesEntity getTypeID() {
         return typeID;
     }
 
-    public void setTypeID(Type typeID) {
+    public void setTypeID(TypesEntity typeID) {
         this.typeID = typeID;
     }
 
@@ -79,11 +79,11 @@ public class DefectiveProductListViewModel {
         this.degreeOfDepreciation = degreeOfDepreciation;
     }
 
-    public States getStateID() {
+    public StatesEntity getStateID() {
         return stateID;
     }
 
-    public void setStateID(States stateID) {
+    public void setStateID(StatesEntity stateID) {
         this.stateID = stateID;
     }
 

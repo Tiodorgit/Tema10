@@ -1,8 +1,8 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.DefectiveProduct;
-import bg.tu_varna.sit.inventory.data.entities.States;
+import bg.tu_varna.sit.inventory.data.entities.DefectiveProductsEntity;
+import bg.tu_varna.sit.inventory.data.entities.StatesEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class StatesRepository implements DAORepository<States> {
+public class StatesRepository implements DAORepository<StatesEntity> {
     private static final Logger log = Logger.getLogger(StatesRepository.class);
     private static StatesRepository getInstance() {
         return StatesRepository.StatesRepositoryHolder.INSTANCE;
@@ -21,7 +21,7 @@ public class StatesRepository implements DAORepository<States> {
     }
 
     @Override
-    public void save(States obj) {
+    public void save(StatesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -37,7 +37,7 @@ public class StatesRepository implements DAORepository<States> {
     }
 
     @Override
-    public void update(States obj) {
+    public void update(StatesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -53,7 +53,7 @@ public class StatesRepository implements DAORepository<States> {
     }
 
     @Override
-    public void delete(States obj) {
+    public void delete(StatesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -69,18 +69,18 @@ public class StatesRepository implements DAORepository<States> {
     }
 
     @Override
-    public Optional<States> getById(String id) {
+    public Optional<StatesEntity> getById(String id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<States> getById(Integer id) {
+    public Optional<StatesEntity> getById(Integer id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        States states = new States();
+        StatesEntity states = new StatesEntity();
         try {
-            String jpql = "SELECT a FROM States a WHERE id =" + id.toString();
-            states=session.createQuery(jpql, States.class).getSingleResult();
+            String jpql = "SELECT a FROM StatesEntity a WHERE id =" + id.toString();
+            states=session.createQuery(jpql, StatesEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -91,13 +91,13 @@ public class StatesRepository implements DAORepository<States> {
     }
 
     @Override
-    public List<States> getAll() {
+    public List<StatesEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<States> states = new LinkedList<>();
+        List<StatesEntity> states = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM States a";
-            states.addAll(session.createQuery(jpql, States.class).getResultList());
+            String jpql = "SELECT a FROM StatesEntity a";
+            states.addAll(session.createQuery(jpql, StatesEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

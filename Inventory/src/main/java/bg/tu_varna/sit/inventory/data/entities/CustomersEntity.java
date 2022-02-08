@@ -2,39 +2,36 @@ package bg.tu_varna.sit.inventory.data.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
-@Table(name = "Customers")
 @Entity
-public class Customer implements Serializable {
-    private static final long serialVersionUID=1L;
-
-    @Id
+@Table(name = "Customers", schema = "dbo", catalog = "inventory")
+public class CustomersEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "id", nullable = false)
     private int id;
-
-    @Column(name = "firstName", nullable = false)
+    @Basic
+    @Column(name = "firstName", nullable = true, length = 50)
     private String firstName;
-
-    @Column(name = "lastName", nullable = false)
+    @Basic
+    @Column(name = "lastName", nullable = true, length = 50)
     private String lastName;
-
-    @Column(name = "phoneNumber", nullable = false)
+    @Basic
+    @Column(name = "phoneNumber", nullable = true, length = 50)
     private String phoneNumber;
+    @OneToMany(mappedBy = "customersByCustomerId")
+    private Set<CardboardsEntity> cardboardsById;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Cardboard> customerSet;
+    public CustomersEntity() {
+    }
 
-    public Customer(String firstName, String lastName, String phoneNumber) {
+    public CustomersEntity(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-    }
-
-    public Customer() {
-
     }
 
     public int getId() {
@@ -69,34 +66,29 @@ public class Customer implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Cardboard> getCustomerSet() {
-        return customerSet;
-    }
-
-    public void setCustomerSet(Set<Cardboard> customerSet) {
-        this.customerSet = customerSet;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customers = (Customer) o;
-        return Objects.equals(firstName, customers.firstName) && Objects.equals(lastName, customers.lastName);
+        CustomersEntity that = (CustomersEntity) o;
+        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(id, firstName, lastName, phoneNumber);
     }
 
     @Override
     public String toString() {
-        return "Customers{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+        return id + " " + firstName +" " + lastName;
+    }
+
+    public Set<CardboardsEntity> getCardboardsById() {
+        return cardboardsById;
+    }
+
+    public void setCardboardsById(Set<CardboardsEntity> cardboardsById) {
+        this.cardboardsById = cardboardsById;
     }
 }

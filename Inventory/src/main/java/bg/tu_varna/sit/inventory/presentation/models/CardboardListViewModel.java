@@ -1,37 +1,37 @@
 package bg.tu_varna.sit.inventory.presentation.models;
 
-import bg.tu_varna.sit.inventory.data.entities.Customer;
-import bg.tu_varna.sit.inventory.data.entities.Product;
+import bg.tu_varna.sit.inventory.data.entities.CustomersEntity;
+import bg.tu_varna.sit.inventory.data.entities.ProductsEntity;
 
 import java.util.Date;
 
 public class CardboardListViewModel {
-    private Customer customer;
-    private Product product;
+    private CustomersEntity customer;
+    private ProductsEntity product;
     private Date dateTaken;
 
     public CardboardListViewModel() {
     }
 
-    public CardboardListViewModel(Customer customer, Product product, Date dateTaken) {
+    public CardboardListViewModel(CustomersEntity customer, ProductsEntity product, Date dateTaken) {
         this.customer = customer;
         this.product = product;
         this.dateTaken = dateTaken;
     }
 
-    public Customer getCustomer() {
+    public CustomersEntity getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomersEntity customer) {
         this.customer = customer;
     }
 
-    public Product getProduct() {
+    public ProductsEntity getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(ProductsEntity product) {
         this.product = product;
     }
 

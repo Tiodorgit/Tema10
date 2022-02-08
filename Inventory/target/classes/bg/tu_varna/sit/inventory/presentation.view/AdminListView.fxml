@@ -8,7 +8,7 @@
 <AnchorPane id="AdminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="insertAccountablePersonButton" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="100.0" text="Добави МОЛ" />
-      <Button fx:id="insertCustomerButton" layoutX="14.0" layoutY="82.0" mnemonicParsing="false" onAction="#customerInsertByUser" prefHeight="81.0" prefWidth="100.0" text="Въведи Клиент" />
+      <Button fx:id="insertCustomerButton" layoutX="14.0" layoutY="82.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="100.0" text="Въведи Клиент" />
       <Button fx:id="insertProductButton" layoutX="14.0" layoutY="175.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="131.0" text="Въведи Продукт" />
       <Button fx:id="insertCustomerCardboardButton" layoutX="4.0" layoutY="275.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="151.0" text="Добави към картон" />
       <Button fx:id="insertDefectiveProductButton" layoutX="14.0" layoutY="475.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="186.0" text="Добави Дефектен Продукт" />

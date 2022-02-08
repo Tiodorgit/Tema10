@@ -1,8 +1,8 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.DefectiveProduct;
-import bg.tu_varna.sit.inventory.data.entities.Product;
+import bg.tu_varna.sit.inventory.data.entities.DefectiveProductsEntity;
+import bg.tu_varna.sit.inventory.data.entities.ProductsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class ProductRepository implements DAORepository<Product> {
+public class ProductRepository implements DAORepository<ProductsEntity> {
     private static final Logger log = Logger.getLogger(ProductRepository.class);
     private static ProductRepository getInstance() {
         return ProductRepository.ProductRepositoryHolder.INSTANCE;
@@ -21,7 +21,7 @@ public class ProductRepository implements DAORepository<Product> {
     }
 
     @Override
-    public void save(Product obj) {
+    public void save(ProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -37,7 +37,7 @@ public class ProductRepository implements DAORepository<Product> {
     }
 
     @Override
-    public void update(Product obj) {
+    public void update(ProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -53,7 +53,7 @@ public class ProductRepository implements DAORepository<Product> {
     }
 
     @Override
-    public void delete(Product obj) {
+    public void delete(ProductsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -69,13 +69,13 @@ public class ProductRepository implements DAORepository<Product> {
     }
 
     @Override
-    public Optional<Product> getById(String id) {
+    public Optional<ProductsEntity> getById(String id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        Product product = new Product();
+        ProductsEntity product = new ProductsEntity();
         try {
             String jpql = "SELECT a FROM DefectiveProduct a WHERE id =" + id.toString();
-            product=session.createQuery(jpql, Product.class).getSingleResult();
+            product=session.createQuery(jpql, ProductsEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -86,18 +86,18 @@ public class ProductRepository implements DAORepository<Product> {
     }
 
     @Override
-    public Optional<Product> getById(Integer id) {
+    public Optional<ProductsEntity> getById(Integer id) {
         return Optional.empty();
     }
 
     @Override
-    public List<Product> getAll() {
+    public List<ProductsEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Product> products = new LinkedList<>();
+        List<ProductsEntity> products = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM Product a";
-            products.addAll(session.createQuery(jpql, Product.class).getResultList());
+            String jpql = "SELECT a FROM ProductsEntity a";
+            products.addAll(session.createQuery(jpql, ProductsEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

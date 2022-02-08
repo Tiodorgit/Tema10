@@ -4,28 +4,26 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Table(name = "Admins")
 @Entity
-public class Admin implements Serializable {
-    private static final long serialVersionUID=1L;
-
-    @Id
+@Table(name = "Admins", schema = "dbo", catalog = "inventory")
+public class AdminsEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idAdmins", nullable = false)
+    @Id
+    @Column(name = "id", nullable = false)
     private int id;
-
-    @Column(name = "username", nullable = false)
+    @Basic
+    @Column(name = "username", nullable = true, length = 50)
     private String username;
-
-    @Column(name = "password", nullable = false)
+    @Basic
+    @Column(name = "password", nullable = true, length = 50)
     private String password;
 
-    public Admin(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public AdminsEntity() {
     }
 
-    public Admin() {
+    public AdminsEntity(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public int getId() {
@@ -52,26 +50,25 @@ public class Admin implements Serializable {
         this.password = password;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return Objects.equals(username, admin.username) && Objects.equals(password, admin.password);
+        AdminsEntity that = (AdminsEntity) o;
+        return id == that.id && Objects.equals(username, that.username) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(id, username, password);
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "AdminsEntity{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

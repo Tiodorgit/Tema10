@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.Type;
+import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class TypeRepository implements DAORepository<Type> {
+public class TypeRepository implements DAORepository<TypesEntity> {
     private static final Logger log = Logger.getLogger(TypeRepository.class);
     private static TypeRepository getInstance() {
         return TypeRepository.TypeRepositoryHolder.INSTANCE;
@@ -20,7 +20,7 @@ public class TypeRepository implements DAORepository<Type> {
     }
 
     @Override
-    public void save(Type obj) {
+    public void save(TypesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -36,7 +36,7 @@ public class TypeRepository implements DAORepository<Type> {
     }
 
     @Override
-    public void update(Type obj) {
+    public void update(TypesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -52,7 +52,7 @@ public class TypeRepository implements DAORepository<Type> {
     }
 
     @Override
-    public void delete(Type obj) {
+    public void delete(TypesEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -68,18 +68,18 @@ public class TypeRepository implements DAORepository<Type> {
     }
 
     @Override
-    public Optional<Type> getById(String id) {
+    public Optional<TypesEntity> getById(String id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<Type> getById(Integer id) {
+    public Optional<TypesEntity> getById(Integer id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        Type type = new Type();
+        TypesEntity type = new TypesEntity();
         try {
-            String jpql = "SELECT a FROM Type a WHERE id =" + id.toString();
-            type=session.createQuery(jpql, Type.class).getSingleResult();
+            String jpql = "SELECT a FROM TypesEntity a WHERE id =" + id.toString();
+            type=session.createQuery(jpql, TypesEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -90,13 +90,13 @@ public class TypeRepository implements DAORepository<Type> {
     }
 
     @Override
-    public List<Type> getAll() {
+    public List<TypesEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Type> types = new LinkedList<>();
+        List<TypesEntity> types = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM Type a";
-            types.addAll(session.createQuery(jpql, Type.class).getResultList());
+            String jpql = "SELECT a FROM TypesEntity a";
+            types.addAll(session.createQuery(jpql, TypesEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

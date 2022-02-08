@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
-import bg.tu_varna.sit.inventory.data.entities.Admin;
+import bg.tu_varna.sit.inventory.data.entities.AdminsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -10,7 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-public class AdminRepository implements DAORepository<Admin>{
+public class AdminRepository implements DAORepository<AdminsEntity>{
     private static final Logger log = Logger.getLogger(AdminRepository.class);
     public static AdminRepository getInstance() { return AdminRepository.UserRepositoryHolder.INSTANCE; }
 
@@ -19,7 +19,7 @@ public class AdminRepository implements DAORepository<Admin>{
     }
 
     @Override
-    public void save(Admin obj) {
+    public void save(AdminsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -35,7 +35,7 @@ public class AdminRepository implements DAORepository<Admin>{
     }
 
     @Override
-    public void update(Admin obj) {
+    public void update(AdminsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -51,7 +51,7 @@ public class AdminRepository implements DAORepository<Admin>{
     }
 
     @Override
-    public void delete(Admin obj) {
+    public void delete(AdminsEntity obj) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -75,10 +75,10 @@ public class AdminRepository implements DAORepository<Admin>{
     public Optional getById(Integer id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        Admin user = new Admin();
+        AdminsEntity user = new AdminsEntity();
         try {
-            String jpql = "SELECT a FROM Admin a WHERE id =" + id.toString();
-            user=session.createQuery(jpql, Admin.class).getSingleResult();
+            String jpql = "SELECT a FROM AdminsEntity a WHERE id =" + id.toString();
+            user=session.createQuery(jpql, AdminsEntity.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -92,10 +92,10 @@ public class AdminRepository implements DAORepository<Admin>{
     public List getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        List<Admin> users = new LinkedList<>();
+        List<AdminsEntity> users = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM Admin a ";
-            users.addAll(session.createQuery(jpql, Admin.class).getResultList());
+            String jpql = "SELECT a FROM AdminsEntity a ";
+            users.addAll(session.createQuery(jpql, AdminsEntity.class).getResultList());
             log.info("Successfully got all admins");
         } catch (Exception e) {
             e.printStackTrace();

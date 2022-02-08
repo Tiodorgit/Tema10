@@ -4,10 +4,13 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="bg:tu_varna:sit:inventory:hibernate.cfg.xml" />
+          <unit-entry name="a.xml" value="8a35ac33-073c-4468-abd0-867e49ea97e1" />
+          <unit-entry name="bg:tu_varna:sit:inventory:hibernate.cfg.xml" value="8a35ac33-073c-4468-abd0-867e49ea97e1" />
         </datasource-map>
-        <naming-strategy-map />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/bg/tu_varna/sit/inventory/hibernate.cfg.xml" />
+        <naming-strategy-map>
+          <unit-entry name="bg:tu_varna:sit:inventory:hibernate.cfg.xml" />
+        </naming-strategy-map>
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">
