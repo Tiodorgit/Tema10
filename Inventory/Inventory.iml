@@ -6,6 +6,7 @@
         <datasource-map>
           <unit-entry name="a.xml" value="8a35ac33-073c-4468-abd0-867e49ea97e1" />
           <unit-entry name="bg:tu_varna:sit:inventory:hibernate.cfg.xml" value="8a35ac33-073c-4468-abd0-867e49ea97e1" />
+          <unit-entry name="hibernate.cfg.xml" value="8a35ac33-073c-4468-abd0-867e49ea97e1" />
         </datasource-map>
         <naming-strategy-map>
           <unit-entry name="bg:tu_varna:sit:inventory:hibernate.cfg.xml" />

@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class StatesRepository implements DAORepository<StatesEntity> {
     private static final Logger log = Logger.getLogger(StatesRepository.class);
-    private static StatesRepository getInstance() {
+    public static StatesRepository getInstance() {
         return StatesRepository.StatesRepositoryHolder.INSTANCE;
     }
     static class StatesRepositoryHolder {
@@ -69,25 +69,21 @@ public class StatesRepository implements DAORepository<StatesEntity> {
     }
 
     @Override
-    public Optional<StatesEntity> getById(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<StatesEntity> getById(Integer id) {
+    public StatesEntity getById(int id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        StatesEntity states = new StatesEntity();
+        List<StatesEntity> states = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM StatesEntity a WHERE id =" + id.toString();
-            states=session.createQuery(jpql, StatesEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM StatesEntity a WHERE id =" + id;
+            states.addAll(session.createQuery(jpql, StatesEntity.class).getResultList());
+            log.info("Successfully got State!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get State error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(states);
+        return states.get(0);
     }
 
     @Override

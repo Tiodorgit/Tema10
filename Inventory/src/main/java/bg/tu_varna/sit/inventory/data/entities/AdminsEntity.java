@@ -7,6 +7,8 @@ import java.util.Objects;
 @Entity
 @Table(name = "Admins", schema = "dbo", catalog = "inventory")
 public class AdminsEntity implements Serializable {
+    private static final long serialVersionUID=1L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)

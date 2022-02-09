@@ -1,24 +1,39 @@
 package bg.tu_varna.sit.inventory.presentation.models;
 
+import bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity;
+import bg.tu_varna.sit.inventory.data.entities.DegreeOfDepricationEntity;
 import bg.tu_varna.sit.inventory.data.entities.StatesEntity;
 import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
 public class ProductListViewModel {
-    private String inventoryNumber;
+    private int inventoryNumber;
     private String description;
     private TypesEntity typeID;
-    private Date dateOfRegistration;
+    private LocalDate dateOfRegistration;
     private int warranty;
-    private int degreeOfDepreciation;
+    private DegreeOfDepricationEntity degreeOfDepreciation;
     private StatesEntity stateID;
-    private int status;
+    private boolean status;
+    private AccountablePersonsEntity accountablePersons;
 
     public ProductListViewModel(){}
 
-    public ProductListViewModel(String inventoryNumber, String description, TypesEntity typeID, Date dateOfRegistration, int warranty, int degreeOfDepreciation, StatesEntity stateID, int status) {
+    public ProductListViewModel(String description, TypesEntity typeID, LocalDate dateOfRegistration, int warranty, DegreeOfDepricationEntity degreeOfDepreciation, StatesEntity stateID, boolean status, AccountablePersonsEntity accountablePersons) {
+        this.description = description;
+        this.typeID = typeID;
+        this.dateOfRegistration = dateOfRegistration;
+        this.warranty = warranty;
+        this.degreeOfDepreciation = degreeOfDepreciation;
+        this.stateID = stateID;
+        this.status = status;
+        this.accountablePersons = accountablePersons;
+    }
+
+    public ProductListViewModel(int inventoryNumber, String description, TypesEntity typeID, LocalDate dateOfRegistration, int warranty, DegreeOfDepricationEntity degreeOfDepreciation, StatesEntity stateID, boolean status, AccountablePersonsEntity accountablePersons) {
         this.inventoryNumber = inventoryNumber;
         this.description = description;
         this.typeID = typeID;
@@ -27,13 +42,19 @@ public class ProductListViewModel {
         this.degreeOfDepreciation = degreeOfDepreciation;
         this.stateID = stateID;
         this.status = status;
+        this.accountablePersons = accountablePersons;
     }
 
-    public String getInventoryNumber() {
+    public ProductListViewModel(int inventoryNumber, String description) {
+        this.inventoryNumber = inventoryNumber;
+        this.description = description;
+    }
+
+    public int getInventoryNumber() {
         return inventoryNumber;
     }
 
-    public void setInventoryNumber(String inventoryNumber) {
+    public void setInventoryNumber(int inventoryNumber) {
         this.inventoryNumber = inventoryNumber;
     }
 
@@ -53,12 +74,12 @@ public class ProductListViewModel {
         this.typeID = typeID;
     }
 
-    public Date getDateOfRegistration() {
+    public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
     }
 
-    public void setDateOfRegistration(Date dateOfDepreciation) {
-        this.dateOfRegistration = dateOfDepreciation;
+    public void setDateOfRegistration(LocalDate dateOfRegistration) {
+        this.dateOfRegistration = dateOfRegistration;
     }
 
     public int getWarranty() {
@@ -69,11 +90,11 @@ public class ProductListViewModel {
         this.warranty = warranty;
     }
 
-    public int getDegreeOfDepreciation() {
+    public DegreeOfDepricationEntity getDegreeOfDepreciation() {
         return degreeOfDepreciation;
     }
 
-    public void setDegreeOfDepreciation(int degreeOfDepreciation) {
+    public void setDegreeOfDepreciation(DegreeOfDepricationEntity degreeOfDepreciation) {
         this.degreeOfDepreciation = degreeOfDepreciation;
     }
 
@@ -85,44 +106,39 @@ public class ProductListViewModel {
         this.stateID = stateID;
     }
 
-    public int getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
+    public AccountablePersonsEntity getAccountablePersons() {
+        return accountablePersons;
+    }
 
+    public void setAccountablePersons(AccountablePersonsEntity accountablePersons) {
+        this.accountablePersons = accountablePersons;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ProductListViewModel that = (ProductListViewModel) o;
-        return warranty == that.warranty && degreeOfDepreciation == that.degreeOfDepreciation && status == that.status && Objects.equals(inventoryNumber, that.inventoryNumber) && Objects.equals(description, that.description) && Objects.equals(typeID, that.typeID) && Objects.equals(dateOfRegistration, that.dateOfRegistration) && Objects.equals(stateID, that.stateID);
+        return warranty == that.warranty && status == that.status && Objects.equals(description, that.description) && Objects.equals(typeID, that.typeID) && Objects.equals(dateOfRegistration, that.dateOfRegistration) && Objects.equals(degreeOfDepreciation, that.degreeOfDepreciation) && Objects.equals(stateID, that.stateID) && Objects.equals(accountablePersons, that.accountablePersons);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(inventoryNumber, description, typeID, dateOfRegistration, warranty, degreeOfDepreciation, stateID, status);
+        return Objects.hash(description, typeID, dateOfRegistration, warranty, degreeOfDepreciation, stateID, status, accountablePersons);
     }
-
 
     @Override
     public String toString() {
-        return "ProductListViewModel{" +
-                "inventoryNumber='" + inventoryNumber + '\'' +
-                ", description='" + description + '\'' +
-                ", typeID=" + typeID +
-                ", dateOfDepreciation=" + dateOfRegistration +
-                ", warranty=" + warranty +
-                ", degreeOfDepreciation=" + degreeOfDepreciation +
-                ", stateID=" + stateID +
-                ", status=" + status +
-                '}';
+        return inventoryNumber + ": "+ description;
     }
-
 }
 
 

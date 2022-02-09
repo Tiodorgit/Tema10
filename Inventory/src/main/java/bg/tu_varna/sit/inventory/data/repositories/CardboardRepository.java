@@ -13,7 +13,7 @@ import java.util.Optional;
 public class CardboardRepository implements DAORepository<CardboardsEntity>{
     private static final Logger log =Logger.getLogger(CardboardRepository.class);
 
-    private static CardboardRepository getInstance() { return CardboardRepository.CardboardRepositoryHolder.INSTANCE; }
+    public static CardboardRepository getInstance() { return CardboardRepository.CardboardRepositoryHolder.INSTANCE; }
     static class CardboardRepositoryHolder {
         public static final CardboardRepository INSTANCE = new CardboardRepository();
     }
@@ -66,26 +66,23 @@ public class CardboardRepository implements DAORepository<CardboardsEntity>{
         }
     }
 
-    @Override
-    public Optional<CardboardsEntity> getById(String id) {
-        return Optional.empty();
-    }
 
     @Override
-    public Optional<CardboardsEntity> getById(Integer id) {
+    public CardboardsEntity getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        CardboardsEntity cardboard = new CardboardsEntity();
+        List<CardboardsEntity> cardboard = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM Cardboard a WHERE id =" + id.toString();
-            cardboard = session.createQuery(jpql, CardboardsEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM CardboardsEntity a WHERE id =" + id;
+            cardboard.addAll(session.createQuery(jpql, CardboardsEntity.class).getResultList());
+            log.info("Successfully got Customer Cardboard!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get Customer Cardboard error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(cardboard);
+        return cardboard.get(0);
     }
 
     @Override

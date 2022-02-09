@@ -9,6 +9,8 @@ import java.util.Set;
 @Entity
 @Table(name = "Customers", schema = "dbo", catalog = "inventory")
 public class CustomersEntity implements Serializable {
+    private static final long serialVersionUID=1L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -71,17 +73,12 @@ public class CustomersEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomersEntity that = (CustomersEntity) o;
-        return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(phoneNumber, that.phoneNumber);
+        return Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(phoneNumber, that.phoneNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, phoneNumber);
-    }
-
-    @Override
-    public String toString() {
-        return id + " " + firstName +" " + lastName;
+        return Objects.hash(firstName, lastName, phoneNumber);
     }
 
     public Set<CardboardsEntity> getCardboardsById() {
@@ -90,5 +87,10 @@ public class CustomersEntity implements Serializable {
 
     public void setCardboardsById(Set<CardboardsEntity> cardboardsById) {
         this.cardboardsById = cardboardsById;
+    }
+
+    @Override
+    public String toString() {
+        return id + ": " + firstName + " " + lastName;
     }
 }

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.inventory.presentation.controllers.HelloController">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bg.tu_varna.sit.inventory.presentation.models.controllers.HelloController">
    <children>
       <VBox alignment="CENTER" spacing="20.0">
           <padding>

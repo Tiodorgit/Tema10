@@ -35,8 +35,6 @@ public class HelloApplication extends Application {
             stage.setTitle(Constants.Values.Title);
             stage.setScene(scene);
             stage.setResizable(false);
-            stage.setWidth(1024);
-            stage.setHeight(768);
             stage.show();
         } else {
             log.error("Sorry, the main fxm could not be loaded.");

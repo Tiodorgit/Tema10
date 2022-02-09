@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.inventory.presentation.controllers;
 
-import bg.tu_varna.sit.inventory.business.services.AdminService;
 import bg.tu_varna.sit.inventory.business.services.LoginService;
+import bg.tu_varna.sit.inventory.presentation.controllers.AdminController;
 import bg.tu_varna.sit.inventory.presentation.models.AccountablePersonListViewModel;
 import bg.tu_varna.sit.inventory.presentation.models.AdminListViewModel;
 import javafx.event.ActionEvent;
@@ -10,9 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import static bg.tu_varna.sit.inventory.common.Constants.View.ACCOUNTABLE_PERSON_VIEW;
@@ -32,7 +32,7 @@ public class LoginScreenController {
     @FXML
     private TextField username;
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     public LoginScreenController(){ }
     public LoginScreenController(Stage stage) {

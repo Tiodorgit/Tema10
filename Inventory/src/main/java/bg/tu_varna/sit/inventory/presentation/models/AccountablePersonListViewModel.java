@@ -45,6 +45,6 @@ public class AccountablePersonListViewModel {
 
     @Override
     public String toString() {
-        return String.format("%s | %s", username, password);
+        return username;
     }
 }

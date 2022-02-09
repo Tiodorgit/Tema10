@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "States", schema = "dbo", catalog = "inventory")
@@ -19,9 +20,9 @@ public class StatesEntity implements Serializable {
     private String state;
 
     @OneToMany(mappedBy = "statesByStateId")
-    private Collection<DefectiveProductsEntity> defectiveProductsById;
+    private Set<DefectiveProductsEntity> defectiveProductsById;
     @OneToMany(mappedBy = "statesByStateId")
-    private Collection<ProductsEntity> productsById;
+    private Set<ProductsEntity> productsById;
 
     public StatesEntity() {
     }
@@ -51,12 +52,12 @@ public class StatesEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         StatesEntity that = (StatesEntity) o;
-        return id == that.id && Objects.equals(state, that.state);
+        return Objects.equals(state, that.state);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, state);
+        return Objects.hash(state);
     }
 
     @Override
@@ -68,15 +69,15 @@ public class StatesEntity implements Serializable {
         return defectiveProductsById;
     }
 
-    public void setDefectiveProductsById(Collection<DefectiveProductsEntity> defectiveProductsById) {
+    public void setDefectiveProductsById(Set<DefectiveProductsEntity> defectiveProductsById) {
         this.defectiveProductsById = defectiveProductsById;
     }
 
-    public Collection<ProductsEntity> getProductsById() {
+    public Set<ProductsEntity> getProductsById() {
         return productsById;
     }
 
-    public void setProductsById(Collection<ProductsEntity> productsById) {
+    public void setProductsById(Set<ProductsEntity> productsById) {
         this.productsById = productsById;
     }
 }

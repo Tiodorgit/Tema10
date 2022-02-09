@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class TypeRepository implements DAORepository<TypesEntity> {
     private static final Logger log = Logger.getLogger(TypeRepository.class);
-    private static TypeRepository getInstance() {
+    public static TypeRepository getInstance() {
         return TypeRepository.TypeRepositoryHolder.INSTANCE;
     }
     static class TypeRepositoryHolder {
@@ -68,25 +68,21 @@ public class TypeRepository implements DAORepository<TypesEntity> {
     }
 
     @Override
-    public Optional<TypesEntity> getById(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<TypesEntity> getById(Integer id) {
+    public TypesEntity getById(int id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        TypesEntity type = new TypesEntity();
+        List<TypesEntity> type = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM TypesEntity a WHERE id =" + id.toString();
-            type=session.createQuery(jpql, TypesEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM TypesEntity a WHERE id =" + id;
+            type.addAll(session.createQuery(jpql, TypesEntity.class).getResultList());
+            log.info("Successfully got Type!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Got Type error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(type);
+        return type.get(0);
     }
 
     @Override

@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class DefectiveProductRepository implements DAORepository<DefectiveProductsEntity> {
     private static final Logger log = Logger.getLogger(DefectiveProductRepository.class);
-    private static DefectiveProductRepository getInstance() {
+    public static DefectiveProductRepository getInstance() {
         return DefectiveProductRepository.DefectiveProductRepositoryHolder.INSTANCE;
     }
     static class DefectiveProductRepositoryHolder {
@@ -27,7 +27,7 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
             log.info("Defective product saved successfully");
         }
         catch (Exception ex) {
-            log.error("Defective product save error" + ex.getMessage());
+            log.error("Defective product save error " + ex.getMessage());
         }
         finally {
             transaction.commit();
@@ -67,25 +67,21 @@ public class DefectiveProductRepository implements DAORepository<DefectiveProduc
     }
 
     @Override
-    public Optional<DefectiveProductsEntity> getById(String id) {
+    public DefectiveProductsEntity getById(int id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        DefectiveProductsEntity defectiveProduct = new DefectiveProductsEntity();
+        List<DefectiveProductsEntity> defectiveProduct = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM DefectiveProductsEntity a WHERE id =" + id.toString();
-            defectiveProduct=session.createQuery(jpql, DefectiveProductsEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM DefectiveProductsEntity a WHERE id =" + id;
+            defectiveProduct.addAll(session.createQuery(jpql, DefectiveProductsEntity.class).getResultList());
+            log.info("Successfully got Defective Product!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get Defective Product error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(defectiveProduct);
-    }
-
-    @Override
-    public Optional<DefectiveProductsEntity> getById(Integer id) {
-        return Optional.empty();
+        return defectiveProduct.get(0);
     }
 
     @Override

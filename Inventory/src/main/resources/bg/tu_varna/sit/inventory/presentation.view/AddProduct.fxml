@@ -1,63 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AddClient" fx:id="DateOfRegistrationTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="646.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label id="AddProduct" layoutX="154.0" layoutY="-7.0" prefHeight="63.0" prefWidth="328.0" text="Добавяне На Продукт" textAlignment="CENTER">
+      <Label id="AddProduct" layoutX="186.0" layoutY="14.0" prefHeight="62.0" prefWidth="274.0" text="Добавяне На Продукт" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField layoutX="54.0" layoutY="87.0" prefHeight="32.0" prefWidth="149.0" />
-      <TextField layoutX="195.0" layoutY="465.0" />
-      <Label layoutX="57.0" layoutY="49.0" prefHeight="44.0" prefWidth="143.0" text="Инвентарен Номер">
+      <TextField fx:id="ProductDescriptionTextField" layoutX="207.0" layoutY="103.0" prefHeight="62.0" prefWidth="400.0" />
+      <Label layoutX="49.0" layoutY="242.0" prefHeight="12.0" prefWidth="150.0" text="Дата на Регистрация" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="356.0" layoutY="135.0" prefHeight="32.0" prefWidth="150.0" text="Дата на Регистрация" textAlignment="CENTER">
+      <Label layoutX="106.0" layoutY="190.0" prefHeight="20.0" prefWidth="36.0" text="Тип">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="259.0" layoutY="241.0" prefHeight="26.0" prefWidth="46.0" text="Тип">
+      <TextField fx:id="ProductWarrantyTextField" layoutX="257.0" layoutY="286.0" />
+      <Label layoutX="86.0" layoutY="118.0" prefHeight="32.0" prefWidth="75.0" text="Описание">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="212.0" layoutY="389.0" />
-      <TextField layoutX="21.0" layoutY="151.0" prefHeight="74.0" prefWidth="266.0" />
-      <Label layoutX="234.0" layoutY="357.0" prefHeight="32.0" prefWidth="75.0" text="Гаранция">
+      <Label layoutX="-71.0" layoutY="289.0" prefHeight="3.0" prefWidth="239.0" text="                                          Гаранция">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="189.0" layoutY="415.0" prefHeight="44.0" prefWidth="182.0" text="Степен На Амортизация">
+      <Label layoutX="-128.0" layoutY="336.0" prefHeight="5.0" prefWidth="334.0" text="                                          Степен На Амортизация">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="39.0" layoutY="119.0" prefHeight="32.0" prefWidth="75.0" text="Описание">
+      <Button fx:id="InsertIntoProductButton" layoutX="279.0" layoutY="429.0" mnemonicParsing="false" onAction="#ClickInsertIntoProductButton" prefHeight="26.0" prefWidth="105.0" text="Въведи" />
+      <Button fx:id="BackButtonProduct" layoutX="1.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnClickBackProduct" prefHeight="50.0" prefWidth="75.0" text="Назад" />
+      <DatePicker fx:id="ProductDateOfRegistrationTextBox" layoutX="257.0" layoutY="239.0" />
+      <ComboBox fx:id="accountablePersonComboBox" layoutX="257.0" layoutY="380.0" prefWidth="150.0" />
+      <Label layoutX="15.0" layoutY="381.0" prefHeight="22.0" prefWidth="218.0" text="Материално отговорнолице">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="248.0" layoutY="300.0" prefHeight="32.0" prefWidth="58.0" text="Статус">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="262.0" layoutY="515.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Въведи" />
-      <Button layoutX="11.0" layoutY="7.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="75.0" text="Назад" />
-      <DatePicker layoutX="343.0" layoutY="167.0" />
-      <ChoiceBox layoutX="194.0" layoutY="267.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="205.0" layoutY="329.0" prefWidth="150.0" />
+      <ComboBox fx:id="ProductDegreeOfAmortizationTextField" layoutX="257.0" layoutY="333.0" prefWidth="150.0" />
+      <RadioButton fx:id="dmaRadioButton" layoutX="225.0" layoutY="191.0" mnemonicParsing="false" onAction="#dmaSelect" selected="true" text="ДМА">
+      <toggleGroup>
+         <ToggleGroup fx:id="ch" />
+      </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="maRadioButton" layoutX="303.0" layoutY="191.0" mnemonicParsing="false" onAction="#maSelect" text="МА" toggleGroup="$ch" />
    </children>
 </AnchorPane>

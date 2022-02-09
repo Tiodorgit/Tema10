@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="insertIntoCustomersButton" layoutX="239.0" layoutY="310.0" mnemonicParsing="false" onAction="#onInsertIntoCustomers" prefHeight="26.0" prefWidth="107.0" text="Въведи" />
+      <Button fx:id="goBackButton" layoutX="22.0" layoutY="29.0" mnemonicParsing="false" onAction="#onGoBack" text="Назад" />
+      <Label layoutX="152.0" layoutY="19.0" text="Ввеждане на Клиент">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="280.0" layoutY="69.0" text="Име">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="258.0" layoutY="143.0" text="Фамилия">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="217.0" layoutY="213.0" text="Телефонен номер">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="firstNameTextField" layoutX="225.0" layoutY="100.0" />
+      <TextField fx:id="lastNameTextField" layoutX="225.0" layoutY="174.0" />
+      <TextField fx:id="phoneNumberTextField" layoutX="225.0" layoutY="243.0" />
+   </children>
+</AnchorPane>

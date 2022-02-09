@@ -9,29 +9,29 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="QueryFullListOfProducts" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="737.0" prefWidth="1293.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <TableView id="QueryDefectiveProducts" layoutX="192.0" layoutY="79.0" prefHeight="574.0" prefWidth="1078.0">
-        <columns>
-          <TableColumn prefWidth="127.0" text="Инвентарен Номер" />
-          <TableColumn minWidth="7.0" prefWidth="82.0" text="Описание" />
-            <TableColumn prefWidth="132.0" text="ТипID" />
-            <TableColumn prefWidth="125.0" text="ДатаНаРегистрация" />
-            <TableColumn prefWidth="111.0" text="Срок на годност" />
-            <TableColumn prefWidth="148.0" text="Степен на Амортизация" />
-            <TableColumn minWidth="0.0" prefWidth="97.0" text="СъстояниеID" />
-            <TableColumn prefWidth="128.0" text="Статус" />
-            <TableColumn prefWidth="128.0" text="ДатаНаБракуване" />
-        </columns>
-      </TableView>
-      <Button layoutX="30.0" layoutY="379.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="116.0" text="Въведи">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button id="QueryProductStatus" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="54.0" text="Назад" />
-      <DatePicker layoutX="15.0" layoutY="157.0" />
-      <DatePicker layoutX="15.0" layoutY="108.0" />
-      <Label layoutX="44.0" layoutY="79.0" text="ОТ" />
-      <Label layoutX="44.0" layoutY="133.0" text="ДО" />
-   </children>
+    <children>
+        <TableView id="QueryDefectiveProducts" fx:id="scrapTableView" layoutX="201.0" layoutY="82.0" prefHeight="574.0" prefWidth="1078.0">
+            <columns>
+                <TableColumn fx:id="InventoryNumber" prefWidth="127.0" text="Инвентарен Номер" />
+                <TableColumn fx:id="Description" minWidth="7.0" prefWidth="82.0" text="Описание" />
+                <TableColumn fx:id="TypeID" prefWidth="132.0" text="ТипID" />
+                <TableColumn fx:id="DateOfRegistration" prefWidth="125.0" text="ДатаНаРегистрация" />
+                <TableColumn fx:id="warranty" prefWidth="111.0" text="Срок на годност" />
+                <TableColumn fx:id="depreciation" prefWidth="148.0" text="Степен на Амортизация" />
+                <TableColumn fx:id="StateID" minWidth="0.0" prefWidth="97.0" text="СъстояниеID" />
+                <TableColumn fx:id="Status" prefWidth="128.0" text="Статус" />
+                <TableColumn fx:id="Scrap" prefWidth="128.0" text="ДатаНаБракуване" />
+            </columns>
+        </TableView>
+        <Button fx:id="ShowFullListOfProducts" layoutX="29.0" layoutY="252.0" mnemonicParsing="false" onAction="#OnClickShowFullListOfProducts" prefHeight="69.0" prefWidth="116.0" text="Покажи">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <Button id="QueryProductStatus" fx:id="BackFromFullListOfAllProducts" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnClickBackFromFullListOfAllProducts" prefHeight="50.0" prefWidth="54.0" text="Назад" />
+        <DatePicker fx:id="ToDateTimePickerQueryFullListOfProducts" layoutX="15.0" layoutY="174.0" onAction="#OnClickToDateTimePickerQueryFullListOfProducts" />
+        <DatePicker fx:id="FromDateTimePickerQueryFullListOfProducts" layoutX="15.0" layoutY="108.0" onAction="#OnClickFromDateTimePickerQueryFullListOfProducts" />
+        <Label layoutX="44.0" layoutY="79.0" text="ОТ" />
+        <Label layoutX="43.0" layoutY="146.0" text="ДО" />
+    </children>
 </AnchorPane>

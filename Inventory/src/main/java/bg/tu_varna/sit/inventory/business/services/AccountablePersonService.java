@@ -18,6 +18,35 @@ public class AccountablePersonService {
         return AccountablePersonService.AccountablePersonServiceHolder.INSTANCE;
     }
 
+    public boolean createAccountablePerson(AccountablePersonListViewModel u) {
+        AccountablePersonsEntity user = new AccountablePersonsEntity(u.getUsername(), u.getPassword());
+        if(checkIfAccountablePersonExist(user)){
+            log.info("Accountable person " + u + "already exists!");
+            return false;
+        }
+        else {
+            try {
+                repositoryAccountablePerson.save(user);
+                log.info("Accountable person " + user.getUsername() + " created!");
+            }
+            catch (Exception e) {
+                log.error("Create admin error!");
+            }
+            return true;
+        }
+    }
+
+    private boolean checkIfAccountablePersonExist(AccountablePersonsEntity user) {
+        List<AccountablePersonsEntity> accountablePersonsEntityList = repositoryAccountablePerson.getAll();
+        for(AccountablePersonsEntity accountablePersons:accountablePersonsEntityList) {
+            if(accountablePersons.equals(user)){
+                log.info("Accountable Person: " + user.getUsername() + " already exists!");
+                return true;
+            }
+        }
+        return false;
+    }
+
     private static class AccountablePersonServiceHolder {
         public static final AccountablePersonService INSTANCE = new AccountablePersonService();
     }

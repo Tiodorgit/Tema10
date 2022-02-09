@@ -55,10 +55,6 @@ public class CustomerListViewModel {
     @Override
     public String
     toString() {
-        return "CustomerListViewModel{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+        return firstName + " " + lastName;
     }
 }

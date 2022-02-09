@@ -1,31 +1,38 @@
 package bg.tu_varna.sit.inventory.data.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
 @Table(name = "DefectiveProducts", schema = "dbo", catalog = "inventory")
-public class DefectiveProductsEntity {
+public class DefectiveProductsEntity implements Serializable {
+    private static final long serialVersionUID=1L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "inventoryNumber", nullable = false)
+    @Column(name = "id", nullable = false)
+    private int id;
+    @Basic
+    @Column(name = "inventoryNumber", nullable = true)
     private int inventoryNumber;
     @Basic
-    @Column(name = "description", nullable = true, length = 50)
+    @Column(name = "description", nullable = true, length = 100)
     private String description;
     @ManyToOne
     @JoinColumn(name = "typeID", referencedColumnName = "id")
     private TypesEntity typesByTypeId;
     @Basic
     @Column(name = "dateOfRegistration", nullable = true)
-    private Date dateOfRegistration;
+    private LocalDate dateOfRegistration;
     @Basic
     @Column(name = "waranty", nullable = true)
     private Integer waranty;
-    @Basic
-    @Column(name = "degreeOfDeprication", nullable = true, precision = 0)
-    private Double degreeOfDeprication;
+    @ManyToOne
+    @JoinColumn(name = "degreeOfDeprication", referencedColumnName = "id")
+    private DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication;
     @ManyToOne
     @JoinColumn(name = "stateID", referencedColumnName = "id")
     private StatesEntity statesByStateId;
@@ -37,21 +44,30 @@ public class DefectiveProductsEntity {
     private AccountablePersonsEntity accountablePersonsByAcountablePersonId;
     @Basic
     @Column(name = "dateOfScrapping", nullable = true)
-    private Date dateOfScrapping;
+    private LocalDate dateOfScrapping;
 
     public DefectiveProductsEntity() {
     }
 
-    public DefectiveProductsEntity(String description, TypesEntity typesByTypeId, Date dateOfRegistration, Integer waranty, Double degreeOfDeprication, StatesEntity statesByStateId, Boolean status, AccountablePersonsEntity accountablePersonsByAcountablePersonId, Date dateOfScrapping) {
+    public DefectiveProductsEntity(int inventoryNumber, String description, TypesEntity typesByTypeId, LocalDate dateOfRegistration, Integer waranty, DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication, StatesEntity statesByStateId, Boolean status, AccountablePersonsEntity accountablePersonsByAcountablePersonId, LocalDate dateOfScrapping) {
+        this.inventoryNumber = inventoryNumber;
         this.description = description;
         this.typesByTypeId = typesByTypeId;
         this.dateOfRegistration = dateOfRegistration;
         this.waranty = waranty;
-        this.degreeOfDeprication = degreeOfDeprication;
+        this.degreeOfDepricationByDegreeOfDeprication = degreeOfDepricationByDegreeOfDeprication;
         this.statesByStateId = statesByStateId;
         this.status = status;
         this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
         this.dateOfScrapping = dateOfScrapping;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getInventoryNumber() {
@@ -70,11 +86,19 @@ public class DefectiveProductsEntity {
         this.description = description;
     }
 
-    public Date getDateOfRegistration() {
+    public TypesEntity getTypesByTypeId() {
+        return typesByTypeId;
+    }
+
+    public void setTypesByTypeId(TypesEntity typesByTypeId) {
+        this.typesByTypeId = typesByTypeId;
+    }
+
+    public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
     }
 
-    public void setDateOfRegistration(Date dateOfRegistration) {
+    public void setDateOfRegistration(LocalDate dateOfRegistration) {
         this.dateOfRegistration = dateOfRegistration;
     }
 
@@ -86,12 +110,20 @@ public class DefectiveProductsEntity {
         this.waranty = waranty;
     }
 
-    public Double getDegreeOfDeprication() {
-        return degreeOfDeprication;
+    public DegreeOfDepricationEntity getDegreeOfDepricationByDegreeOfDeprication() {
+        return degreeOfDepricationByDegreeOfDeprication;
     }
 
-    public void setDegreeOfDeprication(Double degreeOfDeprication) {
-        this.degreeOfDeprication = degreeOfDeprication;
+    public void setDegreeOfDepricationByDegreeOfDeprication(DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication) {
+        this.degreeOfDepricationByDegreeOfDeprication = degreeOfDepricationByDegreeOfDeprication;
+    }
+
+    public StatesEntity getStatesByStateId() {
+        return statesByStateId;
+    }
+
+    public void setStatesByStateId(StatesEntity statesByStateId) {
+        this.statesByStateId = statesByStateId;
     }
 
     public Boolean getStatus() {
@@ -102,11 +134,19 @@ public class DefectiveProductsEntity {
         this.status = status;
     }
 
-    public Date getDateOfScrapping() {
+    public AccountablePersonsEntity getAccountablePersonsByAcountablePersonId() {
+        return accountablePersonsByAcountablePersonId;
+    }
+
+    public void setAccountablePersonsByAcountablePersonId(AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
+        this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
+    }
+
+    public LocalDate getDateOfScrapping() {
         return dateOfScrapping;
     }
 
-    public void setDateOfScrapping(Date dateOfScrapping) {
+    public void setDateOfScrapping(LocalDate dateOfScrapping) {
         this.dateOfScrapping = dateOfScrapping;
     }
 
@@ -128,27 +168,4 @@ public class DefectiveProductsEntity {
         return inventoryNumber + ": '" + description;
     }
 
-    public TypesEntity getTypesByTypeId() {
-        return typesByTypeId;
-    }
-
-    public void setTypesByTypeId(TypesEntity typesByTypeId) {
-        this.typesByTypeId = typesByTypeId;
-    }
-
-    public StatesEntity getStatesByStateId() {
-        return statesByStateId;
-    }
-
-    public void setStatesByStateId(StatesEntity statesByStateId) {
-        this.statesByStateId = statesByStateId;
-    }
-
-    public AccountablePersonsEntity getAccountablePersonsByAcountablePersonId() {
-        return accountablePersonsByAcountablePersonId;
-    }
-
-    public void setAccountablePersonsByAcountablePersonId(AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
-        this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
-    }
 }

@@ -34,9 +34,7 @@ public class TypeListViewModel {
 
     @Override
     public String toString() {
-        return "TypeListViewModel{" +
-                "type='" + type + '\'' +
-                '}';
+        return type;
     }
 }
 

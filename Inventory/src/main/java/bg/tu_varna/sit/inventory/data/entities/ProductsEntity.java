@@ -1,14 +1,18 @@
 package bg.tu_varna.sit.inventory.data.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
 @Table(name = "Products", schema = "dbo", catalog = "inventory")
-public class ProductsEntity {
+public class ProductsEntity implements Serializable {
+    private static final long serialVersionUID=1L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "inventoryNumber", nullable = false)
@@ -21,13 +25,13 @@ public class ProductsEntity {
     private TypesEntity typesByTypeId;
     @Basic
     @Column(name = "dateOfRegistration", nullable = true)
-    private Date dateOfRegistration;
+    private LocalDate dateOfRegistration;
     @Basic
     @Column(name = "waranty", nullable = true)
     private Integer warranty;
-    @Basic
-    @Column(name = "degreeOfDeprication", nullable = true, precision = 0)
-    private Double degreeOfDepreciation;
+    @ManyToOne
+    @JoinColumn(name = "degreeOfDeprication", referencedColumnName = "id")
+    private DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication;
     @ManyToOne
     @JoinColumn(name = "stateID", referencedColumnName = "id")
     private StatesEntity statesByStateId;
@@ -40,6 +44,7 @@ public class ProductsEntity {
 
     @OneToMany(mappedBy = "productsByProductId")
     private Set<CardboardsEntity> cardboardsByInventoryNumber;
+
 
     public ProductsEntity() {
     }
@@ -54,12 +59,12 @@ public class ProductsEntity {
         this.description = description;
     }
 
-    public ProductsEntity(String description, TypesEntity typesByTypeId, Date dateOfRegistration, Integer warranty, Double degreeOfDepreciation, StatesEntity statesByStateId, Boolean status, AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
+    public ProductsEntity(String description, TypesEntity typesByTypeId, LocalDate dateOfRegistration, Integer warranty, DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication, StatesEntity statesByStateId, Boolean status, AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
         this.description = description;
         this.typesByTypeId = typesByTypeId;
         this.dateOfRegistration = dateOfRegistration;
         this.warranty = warranty;
-        this.degreeOfDepreciation = degreeOfDepreciation;
+        this.degreeOfDepricationByDegreeOfDeprication = degreeOfDepricationByDegreeOfDeprication;
         this.statesByStateId = statesByStateId;
         this.status = status;
         this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
@@ -81,11 +86,19 @@ public class ProductsEntity {
         this.description = description;
     }
 
-    public Date getDateOfRegistration() {
+    public TypesEntity getTypesByTypeId() {
+        return typesByTypeId;
+    }
+
+    public void setTypesByTypeId(TypesEntity typesByTypeId) {
+        this.typesByTypeId = typesByTypeId;
+    }
+
+    public LocalDate getDateOfRegistration() {
         return dateOfRegistration;
     }
 
-    public void setDateOfRegistration(Date dateOfRegistration) {
+    public void setDateOfRegistration(LocalDate dateOfRegistration) {
         this.dateOfRegistration = dateOfRegistration;
     }
 
@@ -93,8 +106,24 @@ public class ProductsEntity {
         return warranty;
     }
 
-    public void setWarranty(Integer waranty) {
-        this.warranty = waranty;
+    public void setWarranty(Integer warranty) {
+        this.warranty = warranty;
+    }
+
+    public DegreeOfDepricationEntity getDegreeOfDepricationByDegreeOfDeprication() {
+        return degreeOfDepricationByDegreeOfDeprication;
+    }
+
+    public void setDegreeOfDepricationByDegreeOfDeprication(DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication) {
+        this.degreeOfDepricationByDegreeOfDeprication = degreeOfDepricationByDegreeOfDeprication;
+    }
+
+    public StatesEntity getStatesByStateId() {
+        return statesByStateId;
+    }
+
+    public void setStatesByStateId(StatesEntity statesByStateId) {
+        this.statesByStateId = statesByStateId;
     }
 
     public Boolean getStatus() {
@@ -105,8 +134,20 @@ public class ProductsEntity {
         this.status = status;
     }
 
-    public Double getDegreeOfDepreciation() {
-        return degreeOfDepreciation;
+    public AccountablePersonsEntity getAccountablePersonsByAcountablePersonId() {
+        return accountablePersonsByAcountablePersonId;
+    }
+
+    public void setAccountablePersonsByAcountablePersonId(AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
+        this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
+    }
+
+    public Set<CardboardsEntity> getCardboardsByInventoryNumber() {
+        return cardboardsByInventoryNumber;
+    }
+
+    public void setCardboardsByInventoryNumber(Set<CardboardsEntity> cardboardsByInventoryNumber) {
+        this.cardboardsByInventoryNumber = cardboardsByInventoryNumber;
     }
 
     @Override
@@ -127,39 +168,5 @@ public class ProductsEntity {
         return Objects.hash(inventoryNumber);
     }
 
-    public void setDegreeOfDepreciation(Double degreeOfDepreciation) {
-        this.degreeOfDepreciation = degreeOfDepreciation;
-    }
 
-    public Set<CardboardsEntity> getCardboardsByInventoryNumber() {
-        return cardboardsByInventoryNumber;
-    }
-
-    public void setCardboardsByInventoryNumber(Set<CardboardsEntity> cardboardsByInventoryNumber) {
-        this.cardboardsByInventoryNumber = cardboardsByInventoryNumber;
-    }
-
-    public TypesEntity getTypesByTypeId() {
-        return typesByTypeId;
-    }
-
-    public void setTypesByTypeId(TypesEntity typesByTypeId) {
-        this.typesByTypeId = typesByTypeId;
-    }
-
-    public StatesEntity getStatesByStateId() {
-        return statesByStateId;
-    }
-
-    public void setStatesByStateId(StatesEntity statesByStateId) {
-        this.statesByStateId = statesByStateId;
-    }
-
-    public AccountablePersonsEntity getAccountablePersonsByAcountablePersonId() {
-        return accountablePersonsByAcountablePersonId;
-    }
-
-    public void setAccountablePersonsByAcountablePersonId(AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
-        this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
-    }
 }

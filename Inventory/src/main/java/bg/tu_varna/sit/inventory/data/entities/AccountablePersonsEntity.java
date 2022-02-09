@@ -9,6 +9,8 @@ import java.util.Set;
 @Entity
 @Table(name = "AccountablePersons", schema = "dbo", catalog = "inventory")
 public class AccountablePersonsEntity implements Serializable {
+    private static final long serialVersionUID=1L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
@@ -19,6 +21,7 @@ public class AccountablePersonsEntity implements Serializable {
     @Basic
     @Column(name = "password", nullable = true, length = 50)
     private String password;
+
     @OneToMany(mappedBy = "accountablePersonsByAcountablePersonId")
     private Set<DefectiveProductsEntity> defectiveProductsById;
     @OneToMany(mappedBy = "accountablePersonsByAcountablePersonId")
@@ -61,12 +64,12 @@ public class AccountablePersonsEntity implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountablePersonsEntity that = (AccountablePersonsEntity) o;
-        return id == that.id && Objects.equals(username, that.username) && Objects.equals(password, that.password);
+        return Objects.equals(username, that.username) && Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password);
+        return Objects.hash(username, password);
     }
 
     @Override

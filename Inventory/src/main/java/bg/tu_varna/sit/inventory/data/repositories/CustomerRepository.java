@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public class CustomerRepository implements DAORepository<CustomersEntity>{
     private static final Logger log =Logger.getLogger(CustomerRepository.class);
-    private static CustomerRepository getInstance() { return CustomerRepository.CustomerRepositoryHolder.INSTANCE; }
+    public static CustomerRepository getInstance() { return CustomerRepository.CustomerRepositoryHolder.INSTANCE; }
     static class CustomerRepositoryHolder {
         public static final CustomerRepository INSTANCE = new CustomerRepository();
     }
@@ -66,25 +66,21 @@ public class CustomerRepository implements DAORepository<CustomersEntity>{
     }
 
     @Override
-    public Optional<CustomersEntity> getById(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<CustomersEntity> getById(Integer id) {
+    public CustomersEntity getById(int id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        CustomersEntity customer = new CustomersEntity();
+        List<CustomersEntity> customer = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM CustomersEntity a WHERE id =" + id.toString();
-            customer=session.createQuery(jpql, CustomersEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM CustomersEntity a WHERE id =" + id;
+            customer.addAll(session.createQuery(jpql, CustomersEntity.class).getResultList());
+            log.info("Successfully got Customer!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get Customer error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(customer);
+        return customer.get(0);
     }
 
     @Override

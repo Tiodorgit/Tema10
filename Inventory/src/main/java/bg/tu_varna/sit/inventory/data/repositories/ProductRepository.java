@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public class ProductRepository implements DAORepository<ProductsEntity> {
     private static final Logger log = Logger.getLogger(ProductRepository.class);
-    private static ProductRepository getInstance() {
+    public static ProductRepository getInstance() {
         return ProductRepository.ProductRepositoryHolder.INSTANCE;
     }
     static class ProductRepositoryHolder {
@@ -69,25 +69,21 @@ public class ProductRepository implements DAORepository<ProductsEntity> {
     }
 
     @Override
-    public Optional<ProductsEntity> getById(String id) {
+    public ProductsEntity getById(int id) {
         Session session =Connection.openSession();
         Transaction transaction =session.beginTransaction();
-        ProductsEntity product = new ProductsEntity();
+        List<ProductsEntity> product = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM DefectiveProduct a WHERE id =" + id.toString();
-            product=session.createQuery(jpql, ProductsEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM ProductsEntity a WHERE id =" + id;
+            product.addAll(session.createQuery(jpql, ProductsEntity.class).getResultList());
+            log.info("Successfully got Product!");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get Product error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(product);
-    }
-
-    @Override
-    public Optional<ProductsEntity> getById(Integer id) {
-        return Optional.empty();
+        return product.get(0);
     }
 
     @Override
@@ -96,7 +92,7 @@ public class ProductRepository implements DAORepository<ProductsEntity> {
         Transaction transaction = session.beginTransaction();
         List<ProductsEntity> products = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM ProductsEntity a";
+            String jpql = "SELECT a FROM ProductsEntity a WHERE description != " + null;
             products.addAll(session.createQuery(jpql, ProductsEntity.class).getResultList());
         } catch (Exception e) {
             e.printStackTrace();

@@ -2,14 +2,12 @@ package bg.tu_varna.sit.inventory.data.repositories;
 
 import bg.tu_varna.sit.inventory.data.access.Connection;
 import bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity;
-import bg.tu_varna.sit.inventory.data.entities.AdminsEntity;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 
 public class AccountablePersonRepository implements DAORepository<AccountablePersonsEntity>{
     private static final Logger log = Logger.getLogger(AccountablePersonsEntity.class);
@@ -70,25 +68,21 @@ public class AccountablePersonRepository implements DAORepository<AccountablePer
     }
 
     @Override
-    public Optional<AccountablePersonsEntity> getById(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Optional<AccountablePersonsEntity> getById(Integer id) {
+    public AccountablePersonsEntity getById(int id) {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
-        AccountablePersonsEntity user = new AccountablePersonsEntity();
+        List<AccountablePersonsEntity> user = new LinkedList<>();
         try {
-            String jpql = "SELECT a FROM AccountablePersonsEntity a WHERE id =" + id.toString();
-            user=session.createQuery(jpql, AccountablePersonsEntity.class).getSingleResult();
+            String jpql = "SELECT a FROM AccountablePersonsEntity a WHERE id =" + id;
+            user.addAll(session.createQuery(jpql, AccountablePersonsEntity.class).getResultList());
+            log.info("Successfully got Accountable person");
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Get accountable person error: " + e.getMessage());
         } finally {
             transaction.commit();
             session.close();
         }
-        return Optional.of(user);
+        return user.get(0);
     }
 
     @Override

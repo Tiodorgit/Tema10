@@ -9,6 +9,7 @@
         <property name="hibernate.connection.password">210900</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
         <mapping class="bg.tu_varna.sit.inventory.data.entities.AdminsEntity"/>
         <mapping class="bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity"/>
@@ -18,6 +19,7 @@
         <mapping class="bg.tu_varna.sit.inventory.data.entities.ProductsEntity"/>
         <mapping class="bg.tu_varna.sit.inventory.data.entities.StatesEntity"/>
         <mapping class="bg.tu_varna.sit.inventory.data.entities.TypesEntity"/>
+        <mapping class="bg.tu_varna.sit.inventory.data.entities.DegreeOfDepricationEntity"/>
 
     </session-factory>
 </hibernate-configuration>
