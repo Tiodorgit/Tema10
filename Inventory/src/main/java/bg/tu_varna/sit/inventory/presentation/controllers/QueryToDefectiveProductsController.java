@@ -1,87 +1,119 @@
 package bg.tu_varna.sit.inventory.presentation.controllers;
 
 import bg.tu_varna.sit.inventory.business.services.AdminService;
+import bg.tu_varna.sit.inventory.business.services.DefectiveProductService;
 import bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity;
 import bg.tu_varna.sit.inventory.data.entities.DegreeOfDepricationEntity;
 import bg.tu_varna.sit.inventory.data.entities.StatesEntity;
 import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 import bg.tu_varna.sit.inventory.presentation.models.DefectiveProductListViewModel;
 import bg.tu_varna.sit.inventory.presentation.models.ProductListViewModel;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
-public class QueryToDefectiveProductsController {
+import static bg.tu_varna.sit.inventory.common.Constants.View.ADMIN_VIEW;
+
+public class QueryToDefectiveProductsController implements Initializable {
     Stage s;
-    private final AdminService adminService = AdminService.getInstance();
+    private final DefectiveProductService defectiveProductService = DefectiveProductService.getInstance();
 
     public QueryToDefectiveProductsController(Stage stage) {
         s = stage;
     }
 
     @FXML
-    private Button getProductsButton;
-
+    private Button defectiveProductsQueryButton;
     @FXML
-    private Button backButton;
-
+    private Button goBackButton;
     @FXML
-    private DatePicker fromDate;
-
+    private TableView<DefectiveProductListViewModel> allProductsTableView;
     @FXML
-    private DatePicker toDate;
-
+    private TableColumn<DefectiveProductListViewModel, Integer> inventoryNumberTableColumn;
     @FXML
-    private ComboBox TypeEntity;
-
+    private TableColumn<DefectiveProductListViewModel, String> descriptionTableColumn;
     @FXML
-    private TableView<DefectiveProductListViewModel> allProdTable;
-
+    private TableColumn<DefectiveProductListViewModel, TypesEntity> typeTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, Integer> InventoryNumber;
-
+    private TableColumn<DefectiveProductListViewModel, LocalDate> dateOfRegistrationTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, String> Description;
-
+    private TableColumn<DefectiveProductListViewModel, Integer> warrantyTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, TypesEntity> typeID;
-
+    private TableColumn<DefectiveProductListViewModel, DegreeOfDepricationEntity> depreciationDegreeTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, LocalDate> dateOfRegistration;
-
+    private TableColumn<DefectiveProductListViewModel, StatesEntity> StateTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, Integer> warranty;
-
+    private TableColumn<DefectiveProductListViewModel, Boolean> StatusTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, DegreeOfDepricationEntity> degreeOfDepreciation;
-
+    private TableColumn<DefectiveProductListViewModel, AccountablePersonsEntity> acountablePersonTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, StatesEntity> stateID;
-
+    private TableColumn<DefectiveProductListViewModel, LocalDate> dateOfScrappingTableColumn;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, Boolean> status;
-
+    DatePicker startDatePicker;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, AccountablePersonsEntity> accountablePersons;
+    DatePicker endDatePicker;
 
+    LocalDate localDateStart;
     @FXML
-    private TableColumn<DefectiveProductListViewModel, LocalDate> dateOfScrapping;
+    public void getStartDate(){
+        localDateStart = startDatePicker.getValue();
+    }
 
-    boolean whatType;
-    LocalDate myFromDate;
-    LocalDate myToDate;
-
-
+    LocalDate localDateEnd;
     @FXML
-    public void getFromDate() {
-        myFromDate = fromDate.getValue();
+    public void getEndDate(){
+        localDateEnd = endDatePicker.getValue();
     }
 
     @FXML
-    public void getToDate() {
+    public void onDefectiveProductQerry(){
+        if(localDateStart == null || localDateEnd == null){
+            Alert alert=new Alert(Alert.AlertType.ERROR,"Please,fill all fields!", ButtonType.OK);
+            alert.show();
+        }
+        else {
+            ObservableList<DefectiveProductListViewModel> defectiveProductListViewModels = defectiveProductService.getAllDefectiveProducts(localDateStart,localDateEnd);
+            allProductsTableView.setItems(defectiveProductListViewModels);
+        }
+    }
 
-        myToDate = toDate.getValue();
+    @FXML
+    public void onGoBack(){
+        try {
+            s.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ADMIN_VIEW));
+            Stage stage = new Stage();
+            fxmlLoader.setController(new AdminController(stage));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        inventoryNumberTableColumn.setCellValueFactory(new PropertyValueFactory<>("inventoryNumber"));
+        descriptionTableColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        typeTableColumn.setCellValueFactory(new PropertyValueFactory<>("typeID"));
+        dateOfRegistrationTableColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfRegistration"));
+        warrantyTableColumn.setCellValueFactory(new PropertyValueFactory<>("warranty"));
+        depreciationDegreeTableColumn.setCellValueFactory(new PropertyValueFactory<>("degreeOfDepreciation"));
+        StateTableColumn.setCellValueFactory(new PropertyValueFactory<>("stateID"));
+        StatusTableColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        acountablePersonTableColumn.setCellValueFactory(new PropertyValueFactory<>("accountablePersons"));
+        dateOfScrappingTableColumn.setCellValueFactory(new PropertyValueFactory<>("dateOfScrapping"));
     }
 }

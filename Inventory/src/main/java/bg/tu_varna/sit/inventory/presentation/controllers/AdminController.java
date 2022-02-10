@@ -3,44 +3,45 @@ package bg.tu_varna.sit.inventory.presentation.controllers;
 import bg.tu_varna.sit.inventory.business.services.AdminService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
-import static bg.tu_varna.sit.inventory.common.Constants.View.*;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AdminController {
+import static bg.tu_varna.sit.inventory.common.Constants.View.*;
+import static bg.tu_varna.sit.inventory.presentation.controllers.LoginScreenController.user;
+
+public class AdminController implements Initializable {
     Stage s;
     private final AdminService adminService = AdminService.getInstance();
 
     @FXML
-    private Button logOut;
-    @FXML
-    private Button insertAccountablePersonButton;
-    @FXML
-    private Button insertCustomerButton;
-    @FXML
-    private Button insertProductButton;
-    @FXML
-    private Button insertCustomerCardboardButton;
-    @FXML
-    private Button insertDefectiveProductButton;
-    @FXML
-    private Button queryCustomerCardboardButton;
-    @FXML
-    private Button queryAllProductsButton;
-    @FXML
-    private Button queryByDMAOrDAButton;
-    @FXML
-    private Button queryDefectiveProductsButton;
-    @FXML
-    private Button queryStatusOfProductButton;
-    @FXML
     private Button logOutButton;
     @FXML
-    private MenuItem client;
+    private MenuItem insertCustomerMenuItem;
+    @FXML
+    private MenuItem insertProductMenuItem;
+    @FXML
+    private MenuItem insertCardboardMenuItem;
+    @FXML
+    private MenuItem insertDefectiveProductMenuItem;
+    @FXML
+    private MenuItem insertAccountablePersonMenuItem;
+    @FXML
+    private MenuItem queryCustomerCardboardButton;
+    @FXML
+    private MenuItem queryAllProductsButton;
+    @FXML
+    private MenuItem queryByDMAOrDAButton;
+    @FXML
+    private MenuItem queryDefectiveProductsButton;
+    @FXML
+    private MenuItem queryStatusOfProductButton;
 
     public AdminController() {   }
 
@@ -197,5 +198,27 @@ public class AdminController {
             e.printStackTrace();
         }
 
+    }
+
+    @FXML
+    public void onLogOutClick(){
+        try {
+            s.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(LOGIN_VIEW));
+            Stage stage = new Stage();
+            fxmlLoader.setController(new LoginScreenController(stage));
+            Parent root1 = fxmlLoader.load();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(!user){
+            insertAccountablePersonMenuItem.setVisible(false);
+        }
     }
 }

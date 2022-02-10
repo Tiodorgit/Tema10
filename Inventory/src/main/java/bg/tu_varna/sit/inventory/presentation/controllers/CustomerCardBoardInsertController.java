@@ -11,7 +11,10 @@ import bg.tu_varna.sit.inventory.presentation.models.CustomerListViewModel;
 import bg.tu_varna.sit.inventory.presentation.models.ProductListViewModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -20,6 +23,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
+
+import static bg.tu_varna.sit.inventory.common.Constants.View.ADMIN_VIEW;
 
 
 public class CustomerCardBoardInsertController implements Initializable {
@@ -105,7 +110,18 @@ public class CustomerCardBoardInsertController implements Initializable {
     }
     @FXML
     public void OnClickBackFromCardboard(){
-
+        try {
+            s.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ADMIN_VIEW));
+            Stage stage = new Stage();
+            fxmlLoader.setController(new AdminController(stage));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

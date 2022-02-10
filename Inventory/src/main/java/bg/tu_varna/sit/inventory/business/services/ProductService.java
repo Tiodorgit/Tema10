@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.inventory.business.services;
 
+import bg.tu_varna.sit.inventory.data.entities.DefectiveProductsEntity;
 import bg.tu_varna.sit.inventory.data.entities.ProductsEntity;
+import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 import bg.tu_varna.sit.inventory.data.repositories.ProductRepository;
 import bg.tu_varna.sit.inventory.presentation.models.ProductListViewModel;
 import javafx.collections.FXCollections;
@@ -21,24 +23,7 @@ public class ProductService {
     public static ProductService getInstance() {
         return ProductServiceHolder.INSTANCE;
     }
-
-    /*public ObservableList<ProductListViewModel> getAllProductsList(LocalDate myFromDate, LocalDate myToDate) {
-        List<ProductsEntity> products = ProductRepository.getAll();
-        List<ProductsEntity> productsInPeriod = new ArrayList<>();
-        for(ProductsEntity p: products){
-            if(p.getDateOfRegistration().isAfter(myFromDate) && p.getDateOfRegistration().isBefore(myToDate));
-            {
-                productsInPeriod.add(p);
-            }
-        }
-        return FXCollections.observableList(
-                productsInPeriod.stream().map(p -> new ProductListViewModel(
-                        p.getInventoryNumber(),p.getDescription(),p.getTypesByTypeId(),p.isProdStatus(),p.getExploatationStart(),p.getProductValue(),p.getByMol(),p.getByAmortization(),p.getDiscardDate()
-                )).collect(Collectors.toList()));
-
-    }*/
-
-
+    private final DefectiveProductService defectiveProductService = DefectiveProductService.getInstance();
     public void addProduct(ProductListViewModel p) {
         ProductsEntity products = new ProductsEntity(p.getDescription(),p.getTypeID(),p.getDateOfRegistration(),p.getWarranty(),p.getDegreeOfDepreciation(),p.getStateID(),p.isStatus(),p.getAccountablePersons());
         repository.save(products);
@@ -97,22 +82,70 @@ public class ProductService {
                 )).collect(Collectors.toList()));
     }
 
+    public List<ProductsEntity> getAllProducts(LocalDate localDateStart, LocalDate localDateEnd){
+        List<ProductsEntity> productsEntities = repository.getAll();
+        List<ProductsEntity> productsDuringThePeriod = new ArrayList<>();
+        for(ProductsEntity p: productsEntities) {
+            if(p.getDateOfRegistration().isAfter(localDateStart) && p.getDateOfRegistration().isBefore(localDateEnd)) {
+                productsDuringThePeriod.add(p);
+            }
+        }
+
+        List<DefectiveProductsEntity> defectiveProductsEntities = defectiveProductService.getAllDefectiveProducts();
+        for(DefectiveProductsEntity d: defectiveProductsEntities) {
+            if(d.getDateOfRegistration().isAfter(localDateStart) && d.getDateOfRegistration().isBefore(localDateEnd) && d.getDateOfScrapping().isAfter(localDateStart) && d.getDateOfScrapping().isBefore(localDateEnd)) {
+                ProductsEntity temp = new ProductsEntity(d.getInventoryNumber(),d.getDescription(),d.getTypesByTypeId(),d.getDateOfRegistration(),d.getWaranty(),d.getDegreeOfDepricationByDegreeOfDeprication(),d.getStatesByStateId(),d.getStatus(),d.getAccountablePersonsByAcountablePersonId());
+                productsDuringThePeriod.add(temp);
+            }
+        }
+
+        return productsDuringThePeriod;
+
+    }
+
+    public ObservableList<ProductListViewModel> getAllProductsDuringThePeriod(LocalDate localDateStart, LocalDate localDateEnd) {
+        List<ProductsEntity> productsDuringThePeriod = getAllProducts(localDateStart,localDateEnd);
+
+        return FXCollections.observableList(
+                productsDuringThePeriod.stream().map(p -> new ProductListViewModel(
+                        p.getInventoryNumber(),p.getDescription(),p.getTypesByTypeId(),p.getDateOfRegistration(),p.getWarranty(),p.getDegreeOfDepricationByDegreeOfDeprication(),p.getStatesByStateId(),p.getStatus(),p.getAccountablePersonsByAcountablePersonId()
+                )).collect(Collectors.toList()));
+
+    }
+
+    public ObservableList<ProductListViewModel> getFullListOfProductsByType(LocalDate start, LocalDate end, TypesEntity type) {
+        List<ProductsEntity> productsEntities = getAllProducts(start,end);
+        List<ProductsEntity> productsByType = new ArrayList<>();
+        for(ProductsEntity a: productsEntities) {
+            if(a.getTypesByTypeId().equals(type)){
+                productsByType.add(a);
+            }
+        }
+
+        return FXCollections.observableList(
+                productsByType.stream().map(p -> new ProductListViewModel(
+                        p.getInventoryNumber(),p.getDescription(),p.getTypesByTypeId(),p.getDateOfRegistration(),p.getWarranty(),p.getDegreeOfDepricationByDegreeOfDeprication(),p.getStatesByStateId(),p.getStatus(),p.getAccountablePersonsByAcountablePersonId()
+                )).collect(Collectors.toList()));
+    }
+
+    public ObservableList<ProductListViewModel> getAllAvailableProducts(LocalDate start, LocalDate end, boolean state) {
+        List<ProductsEntity> productsEntities = getAllProducts(start,end);
+        List<ProductsEntity> productsByType = new ArrayList<>();
+        for(ProductsEntity a: productsEntities) {
+            if(a.getStatus().equals(state)){
+                productsByType.add(a);
+            }
+        }
+
+        return FXCollections.observableList(
+                productsByType.stream().map(p -> new ProductListViewModel(
+                        p.getInventoryNumber(),p.getDescription(),p.getTypesByTypeId(),p.getDateOfRegistration(),p.getWarranty(),p.getDegreeOfDepricationByDegreeOfDeprication(),p.getStatesByStateId(),p.getStatus(),p.getAccountablePersonsByAcountablePersonId()
+                )).collect(Collectors.toList()));
+    }
+
     public static class ProductServiceHolder {
         public static final ProductService INSTANCE = new ProductService();
     }
 
-    public double degreeOfDepreciation(LocalDate date, int years){
-        double a =100;
-        if((LocalDate.now().getYear()-date.getYear()) == years){
-            if(LocalDate.now().getMonth().compareTo(date.getMonth())==0 || LocalDate.now().getMonth().compareTo(date.getMonth())==-1){
-                return (a/years)*(years-1);
-            }
-        } else {
-            if((LocalDate.now().getYear()-date.getYear()) < years) {
-                return (a/years)*(LocalDate.now().getYear()-date.getYear());
-            }
-        }
-        return 100;
-    }
 }
 

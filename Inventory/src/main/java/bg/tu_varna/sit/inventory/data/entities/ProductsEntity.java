@@ -70,6 +70,18 @@ public class ProductsEntity implements Serializable {
         this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
     }
 
+    public ProductsEntity(int inventoryNumber, String description, TypesEntity typesByTypeId, LocalDate dateOfRegistration, Integer warranty, DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication, StatesEntity statesByStateId, Boolean status, AccountablePersonsEntity accountablePersonsByAcountablePersonId) {
+        this.inventoryNumber = inventoryNumber;
+        this.description = description;
+        this.typesByTypeId = typesByTypeId;
+        this.dateOfRegistration = dateOfRegistration;
+        this.warranty = warranty;
+        this.degreeOfDepricationByDegreeOfDeprication = degreeOfDepricationByDegreeOfDeprication;
+        this.statesByStateId = statesByStateId;
+        this.status = status;
+        this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
+    }
+
     public int getInventoryNumber() {
         return inventoryNumber;
     }

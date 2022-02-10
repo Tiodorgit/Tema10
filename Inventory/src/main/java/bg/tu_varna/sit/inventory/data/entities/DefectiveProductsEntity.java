@@ -14,7 +14,7 @@ public class DefectiveProductsEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id", nullable = false)
-    private int id;
+        private int id;
     @Basic
     @Column(name = "inventoryNumber", nullable = true)
     private int inventoryNumber;
@@ -32,7 +32,7 @@ public class DefectiveProductsEntity implements Serializable {
     private Integer waranty;
     @ManyToOne
     @JoinColumn(name = "degreeOfDeprication", referencedColumnName = "id")
-    private DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication;
+        private DegreeOfDepricationEntity degreeOfDepricationByDegreeOfDeprication;
     @ManyToOne
     @JoinColumn(name = "stateID", referencedColumnName = "id")
     private StatesEntity statesByStateId;
@@ -110,7 +110,7 @@ public class DefectiveProductsEntity implements Serializable {
         this.waranty = waranty;
     }
 
-    public DegreeOfDepricationEntity getDegreeOfDepricationByDegreeOfDeprication() {
+        public DegreeOfDepricationEntity getDegreeOfDepricationByDegreeOfDeprication() {
         return degreeOfDepricationByDegreeOfDeprication;
     }
 
@@ -142,7 +142,7 @@ public class DefectiveProductsEntity implements Serializable {
         this.accountablePersonsByAcountablePersonId = accountablePersonsByAcountablePersonId;
     }
 
-    public LocalDate getDateOfScrapping() {
+        public LocalDate getDateOfScrapping() {
         return dateOfScrapping;
     }
 

@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.inventory.presentation.controllers;
 
 import bg.tu_varna.sit.inventory.business.services.*;
+import bg.tu_varna.sit.inventory.common.Constants;
 import bg.tu_varna.sit.inventory.data.entities.AccountablePersonsEntity;
 import bg.tu_varna.sit.inventory.data.entities.DegreeOfDepricationEntity;
 import bg.tu_varna.sit.inventory.data.entities.StatesEntity;
@@ -8,13 +9,19 @@ import bg.tu_varna.sit.inventory.data.entities.TypesEntity;
 import bg.tu_varna.sit.inventory.presentation.models.*;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import static bg.tu_varna.sit.inventory.common.Constants.View.ADMIN_VIEW;
+import static bg.tu_varna.sit.inventory.presentation.controllers.LoginScreenController.user;
 
 public class ProductInsertController implements Initializable {
     Stage s;
@@ -74,7 +81,18 @@ public class ProductInsertController implements Initializable {
     }
     @FXML
     public void OnClickBackProduct(){
-
+        try {
+            s.close();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ADMIN_VIEW));
+            Stage stage = new Stage();
+            fxmlLoader.setController(new AdminController(stage));
+            Parent root1 = (Parent) fxmlLoader.load();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void dmaSelect(){
@@ -98,5 +116,9 @@ public class ProductInsertController implements Initializable {
         accountablePersonComboBox.setItems(accountablePersonListViewModels);
         ObservableList<DegreeOfDepricationListViewModel> degreeOfDepricationListViewModels = DegreeOfDepricationService.getInstance().getAllDegreeOfDeprication();
         ProductDegreeOfAmortizationTextField.setItems(degreeOfDepricationListViewModels);
+        if(!user){
+            accountablePersonComboBox.setValue(Constants.User.mol);
+            accountablePersonComboBox.setDisable(true);
+        }
     }
 }

@@ -43,7 +43,7 @@ public class DegreeOfDepricationEntity implements Serializable {
         return category;
     }
 
-    public void setCategory(String category) {
+        public void setCategory(String category) {
         this.category = category;
     }
 
@@ -74,5 +74,10 @@ public class DegreeOfDepricationEntity implements Serializable {
 
     public void setProductsById(Set<ProductsEntity> productsById) {
         this.productsById = productsById;
+    }
+
+    @Override
+    public String toString() {
+        return category;
     }
 }

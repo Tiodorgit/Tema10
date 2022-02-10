@@ -14,6 +14,7 @@ public class AdminService {
     private final AdminService adminService= AdminService.getInstance();
     private static final Logger log = Logger.getLogger(AdminService.class);
     private final AdminRepository repository = AdminRepository.getInstance();
+
     public static AdminService getInstance() {
         return AdminServiceHolder.INSTANCE;
     }

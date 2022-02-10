@@ -9,31 +9,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="QueryListOfProductsByCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="731.0" prefWidth="1173.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="QueryListOfProductsByCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TableView id="QueryDefectiveProducts" fx:id="TableView" layoutX="207.0" layoutY="64.0" prefHeight="574.0" prefWidth="939.0">
-            <columns>
-                <TableColumn fx:id="InventoryNumber" prefWidth="127.0" text="Инвентарен Номер" />
-                <TableColumn fx:id="Description" minWidth="7.0" prefWidth="82.0" text="Описание" />
-                <TableColumn fx:id="TypeID" prefWidth="132.0" text="ТипID" />
-                <TableColumn fx:id="DateOfRegistration" prefWidth="125.0" text="ДатаНаРегистрация" />
-                <TableColumn fx:id="Warranty" prefWidth="111.0" text="Срок на годност" />
-                <TableColumn fx:id="Amortization" prefWidth="148.0" text="Степен на Амортизация" />
-                <TableColumn fx:id="StateID" minWidth="0.0" prefWidth="97.0" text="СъстояниеID" />
-                <TableColumn fx:id="Status" prefWidth="128.0" text="Статус" />
-            </columns>
-        </TableView>
-        <Button fx:id="ShowFullListOfProductsByCategory" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#OnClickShowFullListOfProductsByCategory" prefHeight="69.0" prefWidth="116.0" text="Покажи">
+        <Button fx:id="ShowFullListOfProductsByCategory" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#OnClickShowFullListOfProductsByCategory" prefHeight="69.0" prefWidth="116.0" text="Спарка">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Button>
         <Button id="QueryProductStatus" fx:id="BackFromListOfProductsByCategory" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnClickBackFromListOfProductsByCategory" prefHeight="50.0" prefWidth="54.0" text="Назад" />
-        <DatePicker fx:id="ToDateTimePickerQueryFullListOfProductsByCategory" layoutX="15.0" layoutY="172.0" onAction="#OnClickToDateTimePickerQueryFullListOfProductsByCategory" />
-        <DatePicker fx:id="FromDateTimePickerQueryFullListOfProductsByCategory" layoutX="15.0" layoutY="108.0" onAction="#OnClickFromDateTimePickerQueryFullListOfProductsByCategory" />
         <Label layoutX="44.0" layoutY="80.0" text="ОТ" />
         <Label layoutX="43.0" layoutY="146.0" text="ДО" />
-        <ComboBox fx:id="CategoryCombo" layoutX="15.0" layoutY="232.0" prefWidth="150.0" />
+        <ComboBox fx:id="categoryComboBox" layoutX="15.0" layoutY="232.0" prefWidth="150.0" />
         <Label layoutX="38.0" layoutY="207.0" text="Категория " />
+      <TableView id="QueryDefectiveProducts" fx:id="allProductsTableView" layoutX="198.0" layoutY="84.0" prefHeight="563.0" prefWidth="974.0">
+         <columns>
+            <TableColumn fx:id="inventoryNumberTableColumn" prefWidth="95.19999694824219" text="Инвентарен №" />
+            <TableColumn fx:id="descriptionTableColumn" minWidth="7.0" prefWidth="182.4000244140625" text="Описание" />
+            <TableColumn fx:id="typeTableColumn" prefWidth="66.39996337890625" text="Тип" />
+            <TableColumn fx:id="dateOfRegistrationTableColumn" prefWidth="131.99993896484375" text="Дата на регистрация" />
+            <TableColumn fx:id="warrantyTableColumn" prefWidth="71.9998779296875" text="Гаранция" />
+            <TableColumn fx:id="depreciationDegreeTableColumn" prefWidth="150.4000244140625" text="Степен на Амортизация" />
+            <TableColumn fx:id="StateTableColumn" minWidth="0.0" prefWidth="80.800048828125" text="Състояние" />
+            <TableColumn fx:id="StatusTableColumn" prefWidth="73.599853515625" text="Статус" />
+            <TableColumn fx:id="acountablePersonTableColumn" prefWidth="117.5999755859375" text="МА" />
+         </columns>
+      </TableView>
+      <DatePicker fx:id="endDatePicker" layoutX="10.0" layoutY="173.0" onAction="#getEndDate" />
+      <DatePicker fx:id="startDatePicker" layoutX="10.0" layoutY="109.0" onAction="#getStartDate" />
     </children>
 </AnchorPane>

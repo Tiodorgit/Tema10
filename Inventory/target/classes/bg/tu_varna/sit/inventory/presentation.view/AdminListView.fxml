@@ -8,38 +8,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AdminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="589.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AdminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="insertAccountablePersonButton" layoutX="14.0" layoutY="386.0" mnemonicParsing="false" onAction="#accountablePersonInsert" prefHeight="81.0" prefWidth="100.0" text="Добави МОЛ" />
-      <Button fx:id="insertCustomerButton" layoutX="14.0" layoutY="82.0" mnemonicParsing="false" onAction="#customerInsertByUser" prefHeight="81.0" prefWidth="100.0" text="Въведи Клиент" />
-      <Button fx:id="insertProductButton" layoutX="14.0" layoutY="175.0" mnemonicParsing="false" onAction="#productInsert" prefHeight="81.0" prefWidth="131.0" text="Въведи Продукт" />
-      <Button fx:id="insertCustomerCardboardButton" layoutX="4.0" layoutY="275.0" mnemonicParsing="false" onAction="#customerCardBoardInsert" prefHeight="81.0" prefWidth="151.0" text="Добави към картон" />
-      <Button fx:id="insertDefectiveProductButton" layoutX="14.0" layoutY="475.0" mnemonicParsing="false" onAction="#defectiveProductInsert" prefHeight="81.0" prefWidth="186.0" text="Добави Дефектен Продукт" />
-      <Label layoutX="14.0" layoutY="25.0" prefHeight="34.0" prefWidth="244.0" text="Въвеждане на данни">
+      <Label layoutX="162.0" layoutY="97.0" prefHeight="34.0" prefWidth="160.0" text="Добре дошли">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="queryCustomerCardboardButton" layoutX="527.0" layoutY="77.0" mnemonicParsing="false" onAction="#OnClickQueryCustomerCardboard" prefHeight="91.0" prefWidth="210.0" text="Заявка към картона на клиента" />
-      <Button fx:id="queryAllProductsButton" layoutX="527.0" layoutY="175.0" mnemonicParsing="false" onAction="#OnClickFullListOfAllProducts" prefHeight="100.0" prefWidth="244.0" text="Показване на лист от всички продукти " />
-      <Button fx:id="queryByDMAOrDAButton" layoutX="527.0" layoutY="281.0" mnemonicParsing="false" onAction="#OnClickFullListOfProductsByCategory" prefHeight="81.0" prefWidth="265.0" text="Показване на лист от продукти по категория" />
-      <Button fx:id="queryDefectiveProductsButton" layoutX="527.0" layoutY="369.0" mnemonicParsing="false" onAction="#OnClickQueryToDefectiveProducts" prefHeight="81.0" prefWidth="210.0" text="Заявка към бракувани продукти" />
-      <Button fx:id="queryStatusOfProductButton" layoutX="527.0" layoutY="457.0" mnemonicParsing="false" onAction="#OnClickQueryToStatusOfProducts" prefHeight="81.0" prefWidth="219.0" text="Заявка към статус на продукти" />
-      <Label layoutX="493.0" layoutY="25.0" prefHeight="34.0" prefWidth="244.0" text="Справки">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </Label>
-      <Button fx:id="logOutButton" layoutX="705.0" mnemonicParsing="false" prefHeight="71.0" prefWidth="82.0" text="Изход" />
-      <MenuBar layoutY="1.0" prefHeight="26.0" prefWidth="835.0">
+      <Button fx:id="logOutButton" layoutX="172.0" layoutY="288.0" mnemonicParsing="false" onAction="#onLogOutClick" prefHeight="34.0" prefWidth="142.0" text="Изход" />
+      <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="26.0" prefWidth="485.0">
          <menus>
             <Menu mnemonicParsing="false" text="Въведи">
                <items>
-                  <MenuItem fx:id="client" mnemonicParsing="false" onAction="#customerInsertByUser" text="Клиент" />
+                  <MenuItem fx:id="insertCustomerMenuItem" mnemonicParsing="false" onAction="#customerInsertByUser" text="Клиент" />
+                  <MenuItem fx:id="insertProductMenuItem" mnemonicParsing="false" onAction="#productInsert" text="Продукт" />
+                  <MenuItem fx:id="insertCardboardMenuItem" mnemonicParsing="false" onAction="#customerCardBoardInsert" text="Картони на клиентите" />
+                  <MenuItem fx:id="insertDefectiveProductMenuItem" mnemonicParsing="false" onAction="#defectiveProductInsert" text="Бракуване на продукт" />
+                  <MenuItem fx:id="insertAccountablePersonMenuItem" mnemonicParsing="false" onAction="#accountablePersonInsert" text="Добавяне на МОЛ" />
                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Справки">
+              <items>
+                <MenuItem fx:id="queryCustomerCardboardButton" mnemonicParsing="false" onAction="#OnClickQueryCustomerCardboard" text="Картон на клиента за период" />
+                  <MenuItem fx:id="queryAllProductsButton" mnemonicParsing="false" onAction="#OnClickFullListOfAllProducts" text="Всички продукти за период" />
+                  <MenuItem fx:id="queryByDMAOrDAButton" mnemonicParsing="false" onAction="#OnClickFullListOfProductsByCategory" text="Продукти по тип за период" />
+                  <MenuItem fx:id="queryDefectiveProductsButton" mnemonicParsing="false" onAction="#OnClickQueryToDefectiveProducts" text="Бракувани продукти за период" />
+                  <MenuItem fx:id="queryStatusOfProductButton" mnemonicParsing="false" onAction="#OnClickQueryToStatusOfProducts" text="Проверка на продукти по статус за период" />
+              </items>
             </Menu>
          </menus>
       </MenuBar>
    </children>
 </AnchorPane>
-

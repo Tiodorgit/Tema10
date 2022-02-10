@@ -27,11 +27,9 @@ public class HelloApplication extends Application {
         if(path != null) {
             FXMLLoader fxmlLoader = new FXMLLoader(path);
             fxmlLoader.setController(new LoginScreenController(stage));
-            Parent root = FXMLLoader.load(path);
-
+            Parent root = fxmlLoader.load();
             Scene scene = new Scene(root);
             scene.setFill(Color.TRANSPARENT);
-
             stage.setTitle(Constants.Values.Title);
             stage.setScene(scene);
             stage.setResizable(false);

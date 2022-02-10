@@ -1,13 +1,17 @@
 package bg.tu_varna.sit.inventory.business.services;
 
 import bg.tu_varna.sit.inventory.data.entities.CardboardsEntity;
+import bg.tu_varna.sit.inventory.data.entities.CustomersEntity;
 import bg.tu_varna.sit.inventory.data.entities.ProductsEntity;
 import bg.tu_varna.sit.inventory.data.repositories.CardboardRepository;
 import bg.tu_varna.sit.inventory.presentation.models.CardboardListViewModel;
+import bg.tu_varna.sit.inventory.presentation.models.CustomerListViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,6 +58,20 @@ public class CardboardService {
             }
         }
         return false;
+    }
+
+    public ObservableList<CardboardListViewModel> getProductsByCustomerDuringThePeriod(LocalDate start, LocalDate end, CustomersEntity customer) {
+        List<CardboardsEntity> cardboardsEntities = repository.getAll();
+        List<CardboardsEntity> temp = new ArrayList<>();
+        for(CardboardsEntity a: cardboardsEntities) {
+            if(a.getDateTaken().isAfter(start) && a.getDateTaken().isBefore(end) && a.getCustomersByCustomerId().equals(customer)) {
+                temp.add(a);
+            }
+        }
+        return FXCollections.observableList(
+                temp.stream().map(cb -> new CardboardListViewModel(
+                        cb.getCustomersByCustomerId(),cb.getProductsByProductId(),cb.getDateTaken(),cb.getDateReturn()
+                )).collect(Collectors.toList()));
     }
 
     private static class CardboardServiceHolder {

@@ -74,11 +74,7 @@ public class AccountablePersonsEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "AccountablePersonsEntity{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return username;
     }
 
     public Set<DefectiveProductsEntity> getDefectiveProductsById() {
