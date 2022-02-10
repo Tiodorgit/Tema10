@@ -59,25 +59,39 @@ public class ProductInsertController implements Initializable {
     public void ClickInsertIntoProductButton(){
         TypesEntity type = new TypesEntity();
         DegreeOfDepricationEntity degree = new DegreeOfDepricationEntity();
-        if(MAOrDMA){
-            type = typeService.listViewToEntity(new TypeListViewModel("ДМА"));
-            degree = degreeOfDepricationService.listViewToEntity(ProductDegreeOfAmortizationTextField.getValue());
+        if (ProductDescriptionTextField.getText() == "" || ProductDateOfRegistrationTextBox.getValue() == null || ProductWarrantyTextField.getText() == ""){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!", ButtonType.OK);
+            alert.show();
         }
         else {
-            type = typeService.listViewToEntity(new TypeListViewModel("МА"));
-            degree = null;
+            if(MAOrDMA && ProductDegreeOfAmortizationTextField.getValue() == null) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Please fill all fields!", ButtonType.OK);
+                alert.show();
+            }
+            else {
+                if(MAOrDMA && ProductDegreeOfAmortizationTextField.getValue() != null){
+                    type = typeService.listViewToEntity(new TypeListViewModel("ДМА"));
+                    degree = degreeOfDepricationService.listViewToEntity(ProductDegreeOfAmortizationTextField.getValue());
+                }
+                else {
+                    type = typeService.listViewToEntity(new TypeListViewModel("МА"));
+                    degree = null;
+                }
+                ProductListViewModel productListViewModel = new ProductListViewModel(
+                        ProductDescriptionTextField.getText(),
+                        type,
+                        ProductDateOfRegistrationTextBox.getValue(),
+                        Integer.parseInt(ProductWarrantyTextField.getText()),
+                        degree,
+                        stateService.listViewToEntity(new StateListViewModel("добро")),
+                        true,
+                        accountablePersonService.listViewToEntity(accountablePersonComboBox.getValue())
+                );
+                productService.addProduct(productListViewModel);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "The Product has been registered successfully!", ButtonType.OK);
+                alert.show();
+            }
         }
-        ProductListViewModel productListViewModel = new ProductListViewModel(
-                ProductDescriptionTextField.getText(),
-                type,
-                ProductDateOfRegistrationTextBox.getValue(),
-                Integer.parseInt(ProductWarrantyTextField.getText()),
-                degree,
-                stateService.listViewToEntity(new StateListViewModel("добро")),
-                true,
-                accountablePersonService.listViewToEntity(accountablePersonComboBox.getValue())
-        );
-        productService.addProduct(productListViewModel);
     }
     @FXML
     public void OnClickBackProduct(){

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class AccountablePersonService {
     private final AccountablePersonRepository repositoryAccountablePerson = AccountablePersonRepository.getInstance();
-    private static final Logger log= Logger.getLogger(AdminService.class);
+    private static final Logger log= Logger.getLogger(AccountablePersonService.class);
 
     public static AccountablePersonService getInstance(){
         return AccountablePersonService.AccountablePersonServiceHolder.INSTANCE;

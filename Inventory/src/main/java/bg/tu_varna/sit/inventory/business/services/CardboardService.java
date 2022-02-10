@@ -36,11 +36,21 @@ public class CardboardService {
         return 1;
     }
 
-    public ObservableList<CardboardListViewModel> getAllBoards() {
+        public ObservableList<CardboardListViewModel> getAllBoards() {
         List<CardboardsEntity> customerBoards = repository.getAll();
+        List<CardboardsEntity> temp = new ArrayList<>();
+        for( CardboardsEntity c: customerBoards){
+            if(c.getProductsByProductId().getDescription() == null){
+                c.getProductsByProductId().setDescription("Бракуван");
+                temp.add(c);
+            }
+            else {
+                temp.add(c);
+            }
+        }
 
         return FXCollections.observableList(
-                customerBoards.stream().map(cb -> new CardboardListViewModel(
+                temp.stream().map(cb -> new CardboardListViewModel(
                         cb.getCustomersByCustomerId(),cb.getProductsByProductId(),cb.getDateTaken(),cb.getDateReturn()
                 )).collect(Collectors.toList()));
     }

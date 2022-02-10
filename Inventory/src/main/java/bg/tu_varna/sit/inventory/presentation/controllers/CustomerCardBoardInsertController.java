@@ -138,7 +138,7 @@ public class CustomerCardBoardInsertController implements Initializable {
     }
 
     private void fillProductID() {
-        ObservableList<ProductListViewModel> products = productService.getAllProducts();
+            ObservableList<ProductListViewModel> products = productService.getAllProducts();
         InventoryNumberChoiceBox.setItems(products);
     }
 
