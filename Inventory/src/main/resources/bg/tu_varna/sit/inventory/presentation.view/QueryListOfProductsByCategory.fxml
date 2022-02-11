@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="QueryListOfProductsByCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1203.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="QueryListOfProductsByCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="678.0" prefWidth="1203.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Button fx:id="ShowFullListOfProductsByCategory" layoutX="20.0" layoutY="282.0" mnemonicParsing="false" onAction="#OnClickShowFullListOfProductsByCategory" prefHeight="69.0" prefWidth="116.0" text="Спарка">
             <font>

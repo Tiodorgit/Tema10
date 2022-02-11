@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="QueryCustomerCardboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1025.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="QueryCustomerCardboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="1025.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView id="QueryDefectiveProducts" fx:id="cardBoardTableView" layoutX="263.0" layoutY="79.0" prefHeight="462.0" prefWidth="741.0">
         <columns>

@@ -6,29 +6,31 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="LoginScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="310.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="LoginScreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="398.0" prefWidth="454.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="username" layoutX="123.0" layoutY="90.0" />
-      <Label layoutX="168.0" layoutY="116.0" prefHeight="30.0" prefWidth="60.0" text="Парола">
+      <TextField fx:id="username" layoutX="111.0" layoutY="183.0" />
+      <Label layoutX="156.0" layoutY="209.0" prefHeight="30.0" prefWidth="60.0" text="Парола">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="126.0" layoutY="59.0" prefHeight="30.0" prefWidth="142.0" text="Потребителско Име">
+      <Label layoutX="114.0" layoutY="152.0" prefHeight="30.0" prefWidth="142.0" text="Потребителско Име">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="155.0" layoutY="177.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="44.0" prefWidth="94.0" text="Log in" />
+      <Button fx:id="loginButton" layoutX="143.0" layoutY="270.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="44.0" prefWidth="94.0" text="Log in" />
 <!--      <ImageView fitHeight="257.0" fitWidth="500.0" layoutX="152.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Blog_What-is-Inventory.png" />
          </image>
       </ImageView>-->
-      <RadioButton fx:id="asAdmin" layoutX="307.0" layoutY="62.0" mnemonicParsing="false" selected="true" text="Админ">
+      <RadioButton fx:id="asAdmin" layoutX="295.0" layoutY="155.0" mnemonicParsing="false" selected="true" text="Админ">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -36,11 +38,16 @@
             <ToggleGroup fx:id="ch" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="asAccountablePerson" layoutX="307.0" layoutY="94.0" mnemonicParsing="false" text="МОЛ" toggleGroup="$ch">
+      <RadioButton fx:id="asAccountablePerson" layoutX="295.0" layoutY="187.0" mnemonicParsing="false" text="МОЛ" toggleGroup="$ch">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </RadioButton>
-      <PasswordField fx:id="password" layoutX="123.0" layoutY="142.0" />
+      <PasswordField fx:id="password" layoutX="111.0" layoutY="235.0" />
+      <ImageView fitHeight="140.0" fitWidth="142.0" layoutX="116.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/pngkey.com-admin-icon-png-6346449.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

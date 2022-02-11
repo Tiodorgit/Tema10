@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="388.0" prefWidth="520.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label id="AddAccountablePerson" layoutX="30.0" layoutY="12.0" prefHeight="48.0" prefWidth="385.0" text="                     Добавяне на МОЛ" textAlignment="CENTER">
          <font>

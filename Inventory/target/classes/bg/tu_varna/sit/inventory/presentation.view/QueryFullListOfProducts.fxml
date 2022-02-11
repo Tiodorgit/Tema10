@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="QueryFullListOfProducts" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1195.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="QueryFullListOfProducts" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="1195.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <TableView id="QueryDefectiveProducts" fx:id="allProductsTableView" layoutX="201.0" layoutY="82.0" prefHeight="563.0" prefWidth="974.0">
             <columns>

@@ -85,7 +85,7 @@ public class AdminRepository implements DAORepository<AdminsEntity>{
     }
 
     @Override
-    public List getAll() {
+    public List<AdminsEntity> getAll() {
         Session session = Connection.openSession();
         Transaction transaction = session.beginTransaction();
         List<AdminsEntity> users = new LinkedList<>();

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AddClient" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="772.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label id="AddDefectiveProduct" layoutX="134.0" layoutY="8.0" prefHeight="50.0" prefWidth="545.0" text="                    Дефектен Продукт" textAlignment="CENTER">
          <font>

@@ -32,14 +32,4 @@ public class AdminService {
                         a.getPassword()
                 )).collect(Collectors.toList()));
     }
-
-    public boolean checkIfAdminExists(AdminListViewModel a){
-        ObservableList<AdminListViewModel> allAdmins = adminService.getAllAdmin();
-        for (AdminListViewModel admin : allAdmins) {
-            if (admin.equals(a)) {
-                return true;
-            }
-        }
-        return false;
-    }
 }

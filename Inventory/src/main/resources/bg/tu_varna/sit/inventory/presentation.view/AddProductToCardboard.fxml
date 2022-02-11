@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AddProductToCardboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="783.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AddProductToCardboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="783.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="11.0" layoutY="117.0" prefHeight="25.0" prefWidth="156.0" text="Инвентарен Номер" textAlignment="CENTER">
          <font>

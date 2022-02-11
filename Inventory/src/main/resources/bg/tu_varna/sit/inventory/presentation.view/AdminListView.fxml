@@ -5,17 +5,19 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AdminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AdminListView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="485.0" style="-fx-background-color: #d9b08f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="162.0" layoutY="97.0" prefHeight="34.0" prefWidth="160.0" text="Добре дошли">
+      <Label layoutX="161.0" layoutY="51.0" prefHeight="34.0" prefWidth="160.0" text="Добре дошли">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="logOutButton" layoutX="172.0" layoutY="288.0" mnemonicParsing="false" onAction="#onLogOutClick" prefHeight="34.0" prefWidth="142.0" text="Изход" />
+      <Button fx:id="logOutButton" layoutX="171.0" layoutY="302.0" mnemonicParsing="false" onAction="#onLogOutClick" prefHeight="34.0" prefWidth="142.0" text="Изход" />
       <MenuBar layoutX="-1.0" layoutY="1.0" prefHeight="26.0" prefWidth="485.0">
          <menus>
             <Menu mnemonicParsing="false" text="Въведи">
@@ -38,5 +40,10 @@
             </Menu>
          </menus>
       </MenuBar>
+      <ImageView fitHeight="189.0" fitWidth="422.0" layoutX="39.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../images/Blog_What-is-Inventory.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
